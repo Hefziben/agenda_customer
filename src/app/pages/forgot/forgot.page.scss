@@ -1,0 +1,39 @@
+ion-content {
+  .main_div {
+    margin-top: 30px;
+    p {
+      font-family: 'Roboto_Medium';
+      color: var(--ion_color_main);
+      font-size: 16px;
+      margin: 10px 30px;
+    }
+    .dataitem {
+      box-shadow: 0px 2px 5px 0px rgba(122, 87, 209, 0.25);
+      border-radius: 25px;
+      margin-bottom: 20px;
+      margin-top: 30px;
+      padding-left: 10px;
+      padding-right: 10px;
+
+      .icon_img {
+        margin-right: 25px;
+        height: 20px;
+        width: 20px;
+      }
+      ion-input {
+        font-family: 'Roboto_Regular';
+        font-size: 16px;
+        --placeholder-font-style: 'Roboto_Regular';
+        --placeholder-opacity: 1;
+        --placeholder-color: var(--ion_dark_gray);
+      }
+    }
+    ion-button {
+      --border-radius: 25px;
+      --box-shadow: none;
+      margin: 0;
+      margin-top: 20px;
+      height: 46px;
+    }
+  }
+}

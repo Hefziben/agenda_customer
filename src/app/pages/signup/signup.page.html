@@ -1,0 +1,26 @@
+<ion-content>
+  <img src="assets/image/upper-design.png" class="silde_img">
+  <div class="img_div">
+    <img src="assets/image/login_img.png">
+    <h3 class="name">Rapidnow</h3>
+    <p class="sub">Donde te facilitamos el trabajo</p>
+  </div>
+  <form [formGroup]="signupForm" class="ion-margin-horizontal" (ionChange)="verifCode($event)">
+    <ion-item lines="none" mode="md">
+      <ion-icon src="assets/icon-image/man.svg" slot="start"></ion-icon>
+      <ion-input formControlName="name" type="text" placeholder="Tu nombre completo"></ion-input>
+    </ion-item>
+    <ion-item lines="none" mode="md">
+      <ion-icon src="assets/icon-image/padlock.svg" slot="start"></ion-icon>
+      <ion-input formControlName="passcode" type="text" placeholder="contraseña"></ion-input>
+    </ion-item>
+    <ion-item lines="none" mode="md">
+      <ion-icon src="assets/icon-image/padlock.svg" slot="start"></ion-icon>
+      <ion-input formControlName="repasscode" type="text" placeholder="repite contraseña"></ion-input>
+    </ion-item>
+    
+    <ion-button disabled="{{disable}}" class="otp_btn sign_btn" (click)="signIn()">
+      Guardar
+    </ion-button>
+  </form>
+</ion-content>

@@ -1,0 +1,104 @@
+ion-header {
+  -webkit-box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.16);
+          box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.16);
+}
+
+ion-header ion-row {
+  border-top: 1px solid var(--ion-color-border);
+  height: 44px;
+}
+
+ion-header ion-row ion-col .dot_div {
+  height: 7px;
+  width: 7px;
+  position: absolute;
+  top: 18px;
+  left: 0;
+  background-color: var(--ion_color_main);
+  border-radius: 50%;
+}
+
+ion-header ion-row ion-col .btn-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 8px auto;
+  font-size: 15px;
+  font-family: 'Roboto_Medium';
+  color: var(--ion_dark_blue);
+  text-align: center;
+}
+
+ion-header ion-row ion-col .btn-div .circle {
+  height: 8px;
+  width: 8px;
+  border-radius: 8px;
+  margin-right: 6px;
+  margin-top: 4px;
+  background: transparent;
+}
+
+ion-header ion-row ion-col .active {
+  color: var(--ion_color_main) !important;
+}
+
+ion-header ion-row ion-col .active .circle {
+  background: var(--ion_color_main) !important;
+}
+
+ion-content .data_div {
+  margin-top: 20px;
+}
+
+ion-content .data_div ion-item {
+  --inner-padding-end: 0px;
+  padding-right: 16px;
+}
+
+ion-content .data_div ion-item img {
+  margin-right: 15px;
+  border-radius: 5px;
+  height: 50px;
+  width: 50px;
+}
+
+ion-content .data_div ion-item .name {
+  font-size: 16px;
+  color: var(--ion_dark_blue);
+  font-family: 'Roboto_Medium';
+}
+
+ion-content .data_div ion-item .name .heart {
+  font-size: 20px;
+  color: var(--ion_red);
+}
+
+ion-content .data_div ion-item .type {
+  font-size: 13px;
+  color: var(--ion_type_gray);
+  margin: 0px;
+}
+
+ion-content .data_div ion-item .rate .icon_color {
+  color: var(--ion_yellow);
+}
+
+ion-content .data_div ion-item .rate .icon_deafault {
+  color: var(--ion_star);
+}
+
+ion-content .data_div ion-item .rate ion-icon {
+  height: 14px;
+  width: 14px;
+}
+
+ion-content .data_div ion-item .rate .review {
+  font-size: 13px;
+  color: var(--ion_type_gray);
+  font-family: 'Roboto_Regular';
+  margin-left: 5px;
+}
+/*# sourceMappingURL=like-page.page.css.map */

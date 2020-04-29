@@ -1,0 +1,27 @@
+ion-tab-bar {
+  -webkit-box-shadow: 0px -1px 3px 0px rgba(0, 0, 0, 0.16);
+          box-shadow: 0px -1px 3px 0px rgba(0, 0, 0, 0.16);
+}
+
+ion-tab-bar ion-tab-button {
+  --color-selected:var(--ion_color_main);
+  --color:var(--ion_type_gray);
+}
+
+ion-tab-bar ion-tab-button ion-label {
+  font-family: 'Roboto_Medium';
+}
+
+ion-fab {
+  bottom: 25px;
+}
+
+ion-fab ion-fab-button {
+  --border-style: solid;
+  --border-width: 6px;
+  --border-color: var(--ion_white);
+  --box-shadow: 0px -1px 3px 0px rgba(0,0,0,0.16);
+  --background: var(--ion_color_main);
+  --background-activated:var(--ion_color_main);
+}
+/*# sourceMappingURL=tabs.page.css.map */

@@ -1,0 +1,116 @@
+ion-menu {
+  --ion-background-color: var(--ion_color_main);
+  --ion-text-color: var(--ion_white);
+}
+
+ion-menu ion-icon {
+  color: var(--ion_white);
+}
+
+ion-menu ion-list {
+  background: transparent;
+}
+
+ion-menu ion-header ion-toolbar {
+  height: 159px;
+  border-bottom: solid 5px;
+  z-index: 0;
+  --background: url(../assets/image/menu-back-img.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+ion-menu ion-header ion-toolbar ion-buttons ion-button ion-icon {
+  color: var(--ion_white);
+}
+
+ion-menu ion-header .img_div {
+  margin-top: -50px;
+}
+
+ion-menu ion-header .img_div .square {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  width: 100px;
+  height: 100px;
+  margin: 24px;
+  border: 5px solid var(--ion_white);
+  overflow: hidden;
+  border-radius: 28%;
+  margin: auto;
+  -webkit-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+          box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+}
+
+ion-menu ion-header .img_div .pic {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  overflow: hidden;
+  width: 135px;
+  height: 135px;
+  margin: -18px;
+}
+
+ion-menu ion-header .img_div .pic img {
+  width: 135px;
+  height: 135px;
+}
+
+ion-menu ion-header .img_div .name {
+  font-size: 20px;
+  font-family: 'Roboto_Medium';
+  color: var(--ion_white);
+  margin-bottom: 0px;
+}
+
+ion-menu ion-header .img_div .text {
+  font-size: 16px;
+  font-family: 'Roboto_Regular';
+  color: var(--ion_white);
+  margin-top: 7px;
+}
+
+ion-menu ion-content ion-item {
+  --inner-padding-start: 20vw;
+}
+
+ion-menu ion-content ion-item ion-icon {
+  height: 17px;
+  width: 20px;
+  margin-right: 15px;
+}
+
+ion-menu ion-content ion-item ion-label {
+  font-size: 16px;
+  font-family: 'Roboto_Medium';
+}
+
+ion-menu ion-content .active {
+  --background: var(--ion_dark_blue);
+}
+
+ion-menu ion-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+ion-menu ion-footer p {
+  font-size: 16px;
+  font-family: 'Roboto_Medium';
+  color: var(--ion_white);
+  width: 50%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+ion-menu ion-footer p ion-icon {
+  margin-right: 5px;
+  height: 16px;
+  width: 16px;
+}
+
+ion-menu ion-footer .second_p {
+  text-align: right;
+}
+/*# sourceMappingURL=app.component.css.map */

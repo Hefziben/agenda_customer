@@ -1,0 +1,89 @@
+ion-header {
+  box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.16);
+  ion-row {
+    border-top: 1px solid var(--ion-color-border);
+    height: 44px;
+    ion-col {
+      .dot_div {
+        height: 7px;
+        width: 7px;
+        position: absolute;
+        top: 18px;
+        left: 0;
+        background-color: var(--ion_color_main);
+        border-radius: 50%;
+      }
+      .btn-div {
+        display: flex;
+        width: fit-content;
+        margin: 8px auto;
+        font-size: 15px;
+        font-family: 'Roboto_Medium';
+        color: var(--ion_dark_blue);
+        text-align: center;
+        .circle {
+          height: 8px;
+          width: 8px;
+          border-radius: 8px;
+          margin-right: 6px;
+          margin-top: 4px;
+          background: transparent;
+        }
+      }
+      .active {
+        color: var(--ion_color_main) !important;
+        .circle {
+          background: var(--ion_color_main) !important;
+        }
+      }
+    }
+  }
+}
+
+ion-content {
+  .data_div {
+    margin-top: 20px;
+    ion-item {
+      --inner-padding-end: 0px;
+      padding-right: 16px;
+      img {
+        margin-right: 15px;
+        border-radius: 5px;
+        height: 50px;
+        width: 50px;
+      }
+      .name {
+        font-size: 16px;
+        color: var(--ion_dark_blue);
+        font-family: 'Roboto_Medium';
+        .heart {
+          font-size: 20px;
+          color: var(--ion_red);
+        }
+      }
+      .type {
+        font-size: 13px;
+        color: var(--ion_type_gray);
+        margin: 0px;
+      }
+      .rate {
+        .icon_color {
+          color: var(--ion_yellow);
+        }
+        .icon_deafault {
+          color: var(--ion_star);
+        }
+        ion-icon {
+          height: 14px;
+          width: 14px;
+        }
+        .review {
+          font-size: 13px;
+          color: var(--ion_type_gray);
+          font-family: 'Roboto_Regular';
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}

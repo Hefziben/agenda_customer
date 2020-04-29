@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,OAAO,CAAC;EACJ,MAAM,EAAE,GAAG;CACZ",
+    "sources": [
+        "address-detail.page.scss"
+    ],
+    "names": [],
+    "file": "address-detail.page.css"
+}

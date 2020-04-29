@@ -1,0 +1,35 @@
+<ion-header  no-border>
+  <ion-toolbar mode="md">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/home" icon="ios-arrow-back" text="" mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-button style="font-weight: 600;text-transform: none;font-size: 17px;text-align: start;margin-top: 0px;margin-bottom: 30px;" (click)="getCurrentLocation()" expand="block" fill="clear">
+        <ion-icon name="location-outline" slot="start"></ion-icon>
+        Usar mi posición actual
+      </ion-button>
+    </ion-row>
+    <ion-label style="font-size: 22px;font-weight: 500;color: lightslategray;margin-left: 10px">Lugares populares</ion-label>
+    <ion-row style="margin-top: 20px;">
+      <ion-button *ngFor="let location of locations" style="text-transform: none;width: fit-content;" size="small"  (click)="choose(location)"  expand="block"  shape="round">
+        {{location.name}}
+      </ion-button>
+        </ion-row>
+  </ion-grid>
+
+
+  <!-- <agm-map [latitude]="lat" [longitude]="lng" [zoom]="15">
+    <agm-marker
+      [latitude]="lat"
+      [longitude]="lng"
+      (markerClick)="onMarkerClick()"
+    ></agm-marker>
+  </agm-map> -->
+</ion-content>

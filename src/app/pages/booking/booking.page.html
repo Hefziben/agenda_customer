@@ -1,0 +1,789 @@
+<ion-header no-border>
+  <ion-toolbar color="primary" mode="md">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/home" icon="ios-arrow-back" text="" mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="color: white;">Agenda</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button color="light" ></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-row class="ion-no-padding">
+    <ion-col (click)="chageTab('Active')">
+      <div class="btn-div " [ngClass]="{ active: activeTab == 'Active' }">
+        Todo
+      </div>
+      <div class="dot right_dot"></div>
+    </ion-col>
+    <ion-col (click)="chageTab('New')">
+      <div class="btn-div " [ngClass]="{ active: activeTab == 'New' }">
+        Nuevo
+      </div>
+    </ion-col>
+    <ion-col (click)="chageTab('Completed')">
+      <div class="dot left_dot "></div>
+      <div class="btn-div" [ngClass]="{ active: activeTab == 'Completed' }">
+        Hecho
+      </div>
+      <div class="dot right_dot"></div>
+    </ion-col>
+    <ion-col (click)="chageTab('Cancel')">
+      <div class="btn-div" [ngClass]="{ active: activeTab == 'Cancel' }">
+        Cancelado
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-header>
+
+<ion-content>
+  <ng-container [ngSwitch]="activeTab">
+    <ng-container *ngSwitchCase="'Active'">
+
+      <div class="current_div"  *ngFor="let trabajo of trabajos">
+        <div class="data_div">
+          <p class="rtype_p">{{trabajo.proveedor.type}}</p>
+          <div class="user_div ion-margin-horizontal">
+            <div class="img_div">
+              <img src="{{trabajo.proveedor.image}}">
+            </div>
+            <div class="detail_div">
+              <p class="name_p">{{trabajo.proveedor.name}} {{trabajo.proveedor.lastName}}</p>
+              <p class="detail_p">{{trabajo.proveedor.descripcion}}</p>
+            </div>
+          </div>
+          <ion-row class="ion-margin-horizontal margin-top">
+            
+            <ion-col class="ion-no-padding">
+              <p class="time_p">Servicio:<span style="white-space: initial;"> {{trabajo.servicio.service}} </span></p>
+              <p class="time_p">Descripción:<span style="white-space: initial;"> {{trabajo.description}} </span></p>
+              <p class="time_p">Precio: <span> ${{trabajo.servicio.price}} </span></p>
+            </ion-col>
+            <ion-col class="ion-no-padding">
+
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-margin-horizontal margin-top">
+            
+            <ion-col class="ion-no-padding">
+              <p class="time_p">Fecha:<span> {{trabajo.fecha}}</span></p>
+            </ion-col>
+            <ion-col class="ion-no-padding">
+              <p class="time_p">Hora: <span> {{trabajo.hora}} </span></p>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-margin-horizontal margin-bottom">
+            <ion-col class="ion-no-padding">
+              <p class="time_p">ID:<span> {{trabajo.id}} </span></p>
+            </ion-col>
+            <ion-col class="ion-no-padding">
+              <p class="time_p">Pago: <span> Contra entrega</span></p>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="trabajo.estado.comment" class="ion-margin-horizontal margin-bottom">
+            <ion-col class="ion-no-padding" size="12">            
+              <p class="time_p">Comentarios:<span style="white-space: initial;"> {{trabajo.estado.comment}} </span></p>
+            </ion-col>
+          </ion-row>  
+          <div >
+
+          </div>
+          <div *ngIf="trabajo.estado.name == 'Agendado'">
+            <div class="md-stepper-horizontal process_div">
+              <div class="md-step active done">
+                <div class="md-step-bar-left"></div>
+                <div class="md-step-circle">
+                  <ion-icon name="checkmark" mode="md"></ion-icon>
+                </div>
+                <div class="md-step-title">Agendado</div>
+                <div class="md-step-bar-left"></div>
+                <div class="md-step-bar-right"></div>
+              </div>
+              <div class="md-step  editable">
+                <div class="md-step-circle"></div>
+                <div class="md-step-title">Aprovado</div>
+                <div class="md-step-bar-left"></div>
+                <div class="md-step-bar-right"></div>
+              </div>
+              <div class="md-step ">
+                <div class="md-step-circle"></div>
+                <div class="md-step-title">Terminado</div>
+                <div class="md-step-bar-left"></div>
+                <div class="md-step-bar-right"></div>
+              </div>
+              <div class="md-step last_status">
+                <div class="md-step-circle"><span></span></div>
+                <div class="md-step-title">Pagado</div>
+                <div class="md-step-bar-left"></div>
+                <div class="md-step-bar-right"></div>
+              </div>
+              
+            </div>
+            <div *ngIf="!cancelJob" class="btn_div ion-margin-horizontal">
+              <ion-button class="otp_btn" (click)="cancel()">
+                Cancelar
+              </ion-button>
+  
+            </div>
+            <div  *ngIf="cancelJob" class="last_text_div">
+              <p class="why_p">¿Por qué deseas cancelar el servicio?</p>
+              <div (ionChange)="comment($event)" class="ion-margin-horizontal">
+                <ion-textarea style="color: black;"  rows="5"></ion-textarea>
+                <ion-button (click)="processCancelation(trabajo)" class="otp_btn ">
+                  Procedar a cancelar
+                </ion-button>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div *ngIf="trabajo.estado.name == 'Aprovado'" class="md-stepper-horizontal process_div">
+            <div class="md-step active completed">
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Agendado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step active done ">
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Aprovado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step ">
+              <div class="md-step-circle"></div>
+              <div class="md-step-title">Terminado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step last_status">
+              <div class="md-step-circle"><span></span></div>
+              <div class="md-step-title">Pagado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+          </div>          
+
+          <div *ngIf="trabajo.estado.name == 'Terminado'" class="md-stepper-horizontal orange">
+            <div class="md-step active done">
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Agendado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step active editable">
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Aprovado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step active workdone">
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Terminado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step last_status">
+              <div class="md-step-circle"><span>
+                </span></div>
+              <div class="md-step-title">Pagado</div>
+              <div class="md-step-bar-left last_bar"></div>
+              <div class="md-step-bar-right last_bar"></div>
+            </div>
+          </div>
+          <div *ngIf="trabajo.estado.name == 'Pagado'" class="md-stepper-horizontal orange">
+            <div class="md-step active done">
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Agendado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step active editable">
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Aprovado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step active completed">
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Terminado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step active completed">
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Pagado</div>
+              <div class="md-step-bar-left last_bar"></div>
+              <div class="md-step-bar-right last_bar"></div>
+            </div>
+          </div>
+          <div *ngIf="trabajo.estado.name == 'Cancelado'">
+            <div class="md-stepper-horizontal process_div">
+              <div class="md-step">
+                <div class="md-step-bar-left"></div>
+                <div class="md-step-circle">
+                  <ion-icon name="close" mode="md"></ion-icon>
+                </div>
+                <div class="md-step-title">Cancelado</div>
+                <div class="md-step-bar-left"></div>
+                <div class="md-step-bar-right"></div>
+              </div>
+              <div class="md-step  editable">
+                <div class="md-step-circle"></div>
+                <div class="md-step-title">Aprovado</div>
+                <div class="md-step-bar-left"></div>
+                <div class="md-step-bar-right"></div>
+              </div>
+              <div class="md-step ">
+                <div class="md-step-circle"></div>
+                <div class="md-step-title">Terminado</div>
+                <div class="md-step-bar-left"></div>
+                <div class="md-step-bar-right"></div>
+              </div>
+              <div class="md-step last_status">
+                <div class="md-step-circle"><span></span></div>
+                <div class="md-step-title">Pagado</div>
+                <div class="md-step-bar-left"></div>
+                <div class="md-step-bar-right"></div>
+              </div>
+              
+            </div>
+  
+          </div>  
+        <ion-row *ngIf="trabajo?.estado.code" class="ion-margin-horizontal margin-bottom">
+          <ion-col class="ion-no-padding" size="12">            
+            <p class="time_p">Codido de verificacón:<span style="white-space: initial;font-size: 20px;color: var(--ion_color_main);"> {{trabajo.estado.code}} </span></p>
+          </ion-col>
+        </ion-row>     
+
+          
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="'New'">
+
+      <div class="current_div"  *ngFor="let trabajo of trabajos">
+        <div class="data_div" *ngIf="trabajo.estado.name == 'Agendado' || trabajo.estado.name == 'Aprovado'" >
+          <p class="rtype_p">{{trabajo.proveedor.type}}</p>
+          <div class="user_div ion-margin-horizontal">
+            <div class="img_div">
+              <img src="{{trabajo.proveedor.image}}">
+            </div>
+            <div class="detail_div">
+              <p class="name_p">{{trabajo.proveedor.name}} {{trabajo.proveedor.lastName}}</p>
+              <p class="detail_p">{{trabajo.proveedor.descripcion}}</p>
+            </div>
+          </div>
+          <ion-row class="ion-margin-horizontal margin-top">
+            
+            <ion-col class="ion-no-padding">
+              <p class="time_p">Servicio:<span style="white-space: initial;"> {{trabajo.servicio.service}} </span></p>
+              <p class="time_p">Descripción:<span style="white-space: initial;"> {{trabajo.description}} </span></p>
+              <p class="time_p">Precio: <span> ${{trabajo.servicio.price}} </span></p>
+            </ion-col>
+            <ion-col class="ion-no-padding">
+
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-margin-horizontal margin-top">
+            
+            <ion-col class="ion-no-padding">
+              <p class="time_p">Fecha:<span> {{trabajo.fecha}}</span></p>
+            </ion-col>
+            <ion-col class="ion-no-padding">
+              <p class="time_p">Hora: <span> {{trabajo.hora}} </span></p>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-margin-horizontal margin-bottom">
+            <ion-col class="ion-no-padding">
+              <p class="time_p">ID:<span> {{trabajo.id}} </span></p>
+            </ion-col>
+            <ion-col class="ion-no-padding">
+              <p class="time_p">Pago: <span> Contra entrega</span></p>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="trabajo.estado.comment" class="ion-margin-horizontal margin-bottom">
+            <ion-col class="ion-no-padding" size="12">            
+              <p class="time_p">Comentarios:<span style="white-space: initial;"> {{trabajo.estado.comment}} </span></p>
+            </ion-col>
+          </ion-row>  
+          <div >
+
+          </div>
+          <div *ngIf="trabajo.estado.name == 'Agendado'">
+            <div class="md-stepper-horizontal process_div">
+              <div class="md-step active done">
+                <div class="md-step-bar-left"></div>
+                <div class="md-step-circle">
+                  <ion-icon name="checkmark" mode="md"></ion-icon>
+                </div>
+                <div class="md-step-title">Agendado</div>
+                <div class="md-step-bar-left"></div>
+                <div class="md-step-bar-right"></div>
+              </div>
+              <div class="md-step  editable">
+                <div class="md-step-circle"></div>
+                <div class="md-step-title">Aprovado</div>
+                <div class="md-step-bar-left"></div>
+                <div class="md-step-bar-right"></div>
+              </div>
+              <div class="md-step ">
+                <div class="md-step-circle"></div>
+                <div class="md-step-title">Terminado</div>
+                <div class="md-step-bar-left"></div>
+                <div class="md-step-bar-right"></div>
+              </div>
+              <div class="md-step last_status">
+                <div class="md-step-circle"><span></span></div>
+                <div class="md-step-title">Pagado</div>
+                <div class="md-step-bar-left"></div>
+                <div class="md-step-bar-right"></div>
+              </div>
+              
+            </div>
+            <div *ngIf="!cancelJob" class="btn_div ion-margin-horizontal">
+              <ion-button class="otp_btn" (click)="cancel()">
+                Cancelar
+              </ion-button>
+  
+            </div>
+            <div  *ngIf="cancelJob" class="last_text_div">
+              <p class="why_p">¿Por qué deseas cancelar el servicio?</p>
+              <div (ionChange)="comment($event)" class="ion-margin-horizontal">
+                <ion-textarea style="color: black;"  rows="5"></ion-textarea>
+                <ion-button (click)="processCancelation(trabajo)" class="otp_btn ">
+                  Procedar a cancelar
+                </ion-button>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div *ngIf="trabajo.estado.name == 'Aprovado'" class="md-stepper-horizontal process_div">
+            <div class="md-step active completed">
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Agendado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step active done ">
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Aprovado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step ">
+              <div class="md-step-circle"></div>
+              <div class="md-step-title">Terminado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step last_status">
+              <div class="md-step-circle"><span></span></div>
+              <div class="md-step-title">Pagado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            
+          </div>          
+
+          <div *ngIf="trabajo.estado.name == 'Terminado'" class="md-stepper-horizontal orange">
+            <div class="md-step active done">
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Agendado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step active editable">
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Aprovado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step active workdone">
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Terminado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step last_status">
+              <div class="md-step-circle"><span>
+                </span></div>
+              <div class="md-step-title">Pagado</div>
+              <div class="md-step-bar-left last_bar"></div>
+              <div class="md-step-bar-right last_bar"></div>
+            </div>
+          </div>
+          <div *ngIf="trabajo.estado.name == 'Pagado'" class="md-stepper-horizontal orange">
+            <div class="md-step active done">
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Agendado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step active editable">
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Aprovado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step active completed">
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Terminado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step active completed">
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Pagado</div>
+              <div class="md-step-bar-left last_bar"></div>
+              <div class="md-step-bar-right last_bar"></div>
+            </div>
+          </div>
+          <ion-row *ngIf="trabajo?.estado.code" class="ion-margin-horizontal margin-bottom">
+            <ion-col class="ion-no-padding" size="12">            
+              <p class="time_p">Codido de verificacón:<span style="white-space: initial;font-size: 20px;color: var(--ion_color_main);"> {{trabajo.estado.code}} </span></p>
+            </ion-col>
+          </ion-row>
+          
+        </div>
+        
+      </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="'Completed'">
+      <div class="current_div"  *ngFor="let trabajo of trabajos">
+        <div class="data_div" *ngIf="trabajo.estado.name == 'Terminado' || trabajo.estado.name == 'Pagado'" >
+          <p class="rtype_p">{{trabajo.proveedor.type}}</p>
+          <div class="user_div ion-margin-horizontal">
+            <div class="img_div">
+              <img src="{{trabajo.proveedor.image}}">
+            </div>
+            <div class="detail_div">
+              <p class="name_p">{{trabajo.proveedor.name}} {{trabajo.proveedor.lastName}}</p>
+              <p class="detail_p">{{trabajo.proveedor.descripcion}}</p>
+            </div>
+          </div>
+          <ion-row class="ion-margin-horizontal margin-top">
+            
+            <ion-col class="ion-no-padding">
+              <p class="time_p">Servicio:<span style="white-space: initial;"> {{trabajo.servicio.service}} </span></p>
+              <p class="time_p">Descripción:<span style="white-space: initial;"> {{trabajo.description}} </span></p>
+              <p class="time_p">Precio: <span> ${{trabajo.servicio.price}} </span></p>
+            </ion-col>
+            <ion-col class="ion-no-padding">
+
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-margin-horizontal margin-top">
+            
+            <ion-col class="ion-no-padding">
+              <p class="time_p">Fecha:<span> {{trabajo.fecha}}</span></p>
+            </ion-col>
+            <ion-col class="ion-no-padding">
+              <p class="time_p">Hora: <span> {{trabajo.hora}} </span></p>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-margin-horizontal margin-bottom">
+            <ion-col class="ion-no-padding">
+              <p class="time_p">ID:<span> {{trabajo.id}} </span></p>
+            </ion-col>
+            <ion-col class="ion-no-padding">
+              <p class="time_p">Pago: <span> Contra entrega</span></p>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="trabajo.estado.comment" class="ion-margin-horizontal margin-bottom">
+            <ion-col class="ion-no-padding" size="12">            
+              <p class="time_p">Comentarios:<span style="white-space: initial;"> {{trabajo.estado.comment}} </span></p>
+            </ion-col>
+          </ion-row>  
+          <div >
+
+          </div>
+          <div *ngIf="trabajo.estado.name == 'Agendado'">
+            <div class="md-stepper-horizontal process_div">
+              <div class="md-step active done">
+                <div class="md-step-bar-left"></div>
+                <div class="md-step-circle">
+                  <ion-icon name="checkmark" mode="md"></ion-icon>
+                </div>
+                <div class="md-step-title">Agendado</div>
+                <div class="md-step-bar-left"></div>
+                <div class="md-step-bar-right"></div>
+              </div>
+              <div class="md-step  editable">
+                <div class="md-step-circle"></div>
+                <div class="md-step-title">Aprovado</div>
+                <div class="md-step-bar-left"></div>
+                <div class="md-step-bar-right"></div>
+              </div>
+              <div class="md-step ">
+                <div class="md-step-circle"></div>
+                <div class="md-step-title">Terminado</div>
+                <div class="md-step-bar-left"></div>
+                <div class="md-step-bar-right"></div>
+              </div>
+              <div class="md-step last_status">
+                <div class="md-step-circle"><span></span></div>
+                <div class="md-step-title">Pagado</div>
+                <div class="md-step-bar-left"></div>
+                <div class="md-step-bar-right"></div>
+              </div>
+              
+            </div>
+            <div *ngIf="!cancelJob" class="btn_div ion-margin-horizontal">
+              <ion-button class="otp_btn" (click)="cancel()">
+                Cancelar
+              </ion-button>
+  
+            </div>
+            <div  *ngIf="cancelJob" class="last_text_div">
+              <p class="why_p">¿Por qué deseas cancelar el servicio?</p>
+              <div (ionChange)="comment($event)" class="ion-margin-horizontal">
+                <ion-textarea style="color: black;"  rows="5"></ion-textarea>
+                <ion-button (click)="processCancelation(trabajo)" class="otp_btn ">
+                  Procedar a cancelar
+                </ion-button>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div *ngIf="trabajo.estado.name == 'Aprovado'" class="md-stepper-horizontal process_div">
+            <div class="md-step active completed">
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Agendado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step active done ">
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Aprovado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step ">
+              <div class="md-step-circle"></div>
+              <div class="md-step-title">Terminado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step last_status">
+              <div class="md-step-circle"><span></span></div>
+              <div class="md-step-title">Pagado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            
+          </div>          
+
+          <div *ngIf="trabajo.estado.name == 'Terminado'" class="md-stepper-horizontal orange">
+            <div class="md-step active done">
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Agendado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step active editable">
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Aprovado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step active workdone">
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Terminado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step last_status">
+              <div class="md-step-circle"><span>
+                </span></div>
+              <div class="md-step-title">Pagado</div>
+              <div class="md-step-bar-left last_bar"></div>
+              <div class="md-step-bar-right last_bar"></div>
+            </div>
+          </div>
+          <div *ngIf="trabajo.estado.name == 'Pagado'" class="md-stepper-horizontal orange">
+            <div class="md-step active done">
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Agendado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step active editable">
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Aprovado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step active completed">
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Terminado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step active completed">
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Pagado</div>
+              <div class="md-step-bar-left last_bar"></div>
+              <div class="md-step-bar-right last_bar"></div>
+            </div>
+          </div> 
+          <ion-row *ngIf="trabajo?.estado.code" class="ion-margin-horizontal margin-bottom">
+            <ion-col class="ion-no-padding" size="12">            
+              <p class="time_p">Codido de verificacón:<span style="white-space: initial;font-size: 20px;color: var(--ion_color_main);"> {{trabajo.estado.code}} </span></p>
+            </ion-col>
+          </ion-row>
+
+          
+        </div>
+        
+      </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="'Cancel'"> <div class="current_div"  *ngFor="let trabajo of trabajos">
+      <div class="data_div" *ngIf="trabajo.estado.name == 'Cancelado'" >
+        <p class="rtype_p">{{trabajo.proveedor.type}}</p>
+        <div class="user_div ion-margin-horizontal">
+          <div class="img_div">
+            <img src="{{trabajo.proveedor.image}}">
+          </div>
+          <div class="detail_div">
+            <p class="name_p">{{trabajo.proveedor.name}} {{trabajo.proveedor.lastName}}</p>
+            <p class="detail_p">{{trabajo.proveedor.descripcion}}</p>
+          </div>
+        </div>
+        <ion-row class="ion-margin-horizontal margin-top">
+          
+          <ion-col class="ion-no-padding">
+            <p class="time_p">Servicio:<span style="white-space: initial;"> {{trabajo.servicio.service}} </span></p>
+            <p class="time_p">Descripción:<span style="white-space: initial;"> {{trabajo.description}} </span></p>
+            <p class="time_p">Precio: <span> ${{trabajo.servicio.price}} </span></p>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-margin-horizontal margin-top">
+          
+          <ion-col class="ion-no-padding">
+            <p class="time_p">Fecha:<span> {{trabajo.fecha}}</span></p>
+          </ion-col>
+          <ion-col class="ion-no-padding">
+            <p class="time_p">Hora: <span> {{trabajo.hora}} </span></p>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-margin-horizontal margin-bottom">
+          <ion-col class="ion-no-padding">
+            <p class="time_p">ID:<span> {{trabajo.id}} </span></p>
+          </ion-col>
+          <ion-col class="ion-no-padding">
+            <p class="time_p">Pago: <span> Contra entrega</span></p>
+          </ion-col>
+        </ion-row>
+           <div *ngIf="trabajo.estado.name == 'Cancelado'">
+          <div class="md-stepper-horizontal process_div">
+            <div class="md-step">
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-circle">
+                <ion-icon name="close" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Cancelado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step  editable">
+              <div class="md-step-circle"></div>
+              <div class="md-step-title">Aprovado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step ">
+              <div class="md-step-circle"></div>
+              <div class="md-step-title">Terminado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step last_status">
+              <div class="md-step-circle"><span></span></div>
+              <div class="md-step-title">Pagado</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            
+          </div>
+        </div> 
+        
+        <ion-row class="ion-margin-horizontal margin-bottom">
+          <ion-col class="ion-no-padding" size="12">            
+            <p class="time_p">Commentarios:<span style="white-space: initial;"> {{trabajo.estado.comment}} </span></p>
+          </ion-col>
+        </ion-row>      
+
+        
+      </div>
+    </div>
+    </ng-container>
+  </ng-container>
+</ion-content>

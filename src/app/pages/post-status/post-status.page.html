@@ -1,0 +1,269 @@
+<ion-header no-border>
+  <ion-toolbar mode="md">
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/home" icon="ios-arrow-back" text="" mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Post Status</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-row class="ion-no-padding">
+    <ion-col (click)="chageTab('Active')">
+      <div class="btn-div " [ngClass]="{ active: activeTab == 'Active' }">
+        Current
+      </div>
+    </ion-col>
+    <ion-col (click)="chageTab('Completed')">
+      <div class="dot left_dot"></div>
+      <div class="btn-div" [ngClass]="{ active: activeTab == 'Completed' }">
+        Finished
+      </div>
+      <div class="dot right_dot"></div>
+    </ion-col>
+    <ion-col (click)="chageTab('Cancel')">
+      <div class="btn-div" [ngClass]="{ active: activeTab == 'Cancel' }">
+        Canceled
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-header>
+
+<ion-content>
+  <ng-container [ngSwitch]="activeTab">
+    <ng-container *ngSwitchCase="'Active'">
+      <div class="current_div">
+        <div class="data_div" *ngFor="let item of data?.current">
+          <p class="rtype_p">{{item?.type}}</p>
+          <div class="user_div ion-margin-horizontal">
+            <div class="img_div">
+              <img [src]="item.image">
+            </div>
+            <div class="detail_div">
+              <p class="name_p">{{item?.name}} <span class="ion-float-right">{{item?.date}}</span></p>
+              <p class="detail_p">{{item?.detail}}</p>
+            </div>
+          </div>
+          <ion-row class="ion-margin-horizontal margin-top">
+            <ion-col class="ion-no-padding">
+              <p class="time_p">Date:<span> {{item?.rdate}}</span></p>
+            </ion-col>
+            <ion-col class="ion-no-padding">
+              <p class="time_p">Time: <span> {{item?.time}}</span></p>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-margin-horizontal margin-bottom">
+            <ion-col class="ion-no-padding">
+              <p class="time_p">ID No:<span> {{item?.id}}</span></p>
+            </ion-col>
+            <ion-col class="ion-no-padding">
+              <p class="time_p">Payment Method: <span> {{item?.payment}}</span></p>
+            </ion-col>
+          </ion-row>
+
+          <div class="md-stepper-horizontal process_div">
+            <div class="md-step active done">
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Post Request</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step  editable">
+              <div class="md-step-circle"></div>
+              <div class="md-step-title">Approved</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step ">
+              <div class="md-step-circle"></div>
+              <div class="md-step-title">Work Done</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step last_status">
+              <div class="md-step-circle"><span></span></div>
+              <div class="md-step-title">Payment</div>
+              <div class="md-step-bar-left last_bar"></div>
+              <div class="md-step-bar-right last_bar"></div>
+            </div>
+          </div>
+
+          <div class="btn_div ion-margin-horizontal" *ngIf="item.btn_div">
+
+            <ion-button class="cancel_btn" *ngIf="!cancel" (click)="cancel=true">
+              <ion-icon name="close"></ion-icon>
+            </ion-button>
+            <div class="all_request" *ngIf="!cancel" (click)="serviceProvider()">
+              <p class="post_p">View Post Request <span class="ion-float-right">14</span></p>
+            </div>
+            <div class="cancel_div" *ngIf="cancel">
+              <p class="want_to">Want To Cancel <ion-button class="ion-float-right yes_btn">Yes</ion-button>
+                <ion-button class="ion-float-right no_btn" (click)="cancel=false">No</ion-button>
+              </p>
+            </div>
+            <ion-button class="total_btn" *ngIf="cancel" (click)="cancel=false">19</ion-button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="'Completed'">
+      <div class="current_div">
+        <div class="data_div" *ngFor="let item of data?.current">
+          <p class="rtype_p">{{item?.type}}</p>
+          <div class="user_div ion-margin-horizontal">
+            <div class="img_div">
+              <img [src]="item.image">
+            </div>
+            <div class="detail_div">
+              <p class="name_p">{{item?.name}} <span class="ion-float-right">{{item?.date}}</span></p>
+              <p class="detail_p">{{item?.detail}}</p>
+            </div>
+          </div>
+          <ion-row class="ion-margin-horizontal margin-top">
+            <ion-col class="ion-no-padding">
+              <p class="time_p">Date:<span> {{item?.rdate}}</span></p>
+            </ion-col>
+            <ion-col class="ion-no-padding">
+              <p class="time_p">Time: <span> {{item?.time}}</span></p>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-margin-horizontal margin-bottom">
+            <ion-col class="ion-no-padding">
+              <p class="time_p">ID No:<span> {{item?.id}}</span></p>
+            </ion-col>
+            <ion-col class="ion-no-padding">
+              <p class="time_p">Payment Method: <span> {{item?.payment}}</span></p>
+            </ion-col>
+          </ion-row>
+
+          <div class="md-stepper-horizontal process_div">
+            <div class="md-step active done">
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Post Request</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step  editable">
+              <div class="md-step-circle"></div>
+              <div class="md-step-title">Approved</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step ">
+              <div class="md-step-circle"></div>
+              <div class="md-step-title">Work Done</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step last_status">
+              <div class="md-step-circle"><span></span></div>
+              <div class="md-step-title">Payment</div>
+              <div class="md-step-bar-left last_bar"></div>
+              <div class="md-step-bar-right last_bar"></div>
+            </div>
+          </div>
+
+          <div class="btn_div ion-margin-horizontal" *ngIf="item.btn_div">
+
+            <ion-button class="cancel_btn" *ngIf="!cancel" (click)="cancel=true">
+              <ion-icon name="close"></ion-icon>
+            </ion-button>
+            <div class="all_request" *ngIf="!cancel" (click)="serviceProvider()">
+              <p class="post_p">View Post Request <span class="ion-float-right">14</span></p>
+            </div>
+            <div class="cancel_div" *ngIf="cancel">
+              <p class="want_to">Want To Cancel <ion-button class="ion-float-right yes_btn">Yes</ion-button>
+                <ion-button class="ion-float-right no_btn">No</ion-button>
+              </p>
+            </div>
+            <ion-button class="total_btn" *ngIf="cancel">19</ion-button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="'Cancel'">
+      <div class="current_div">
+        <div class="data_div" *ngFor="let item of data?.current">
+          <p class="rtype_p">{{item?.type}}</p>
+          <div class="user_div ion-margin-horizontal">
+            <div class="img_div">
+              <img [src]="item.image">
+            </div>
+            <div class="detail_div">
+              <p class="name_p">{{item?.name}} <span class="ion-float-right">{{item?.date}}</span></p>
+              <p class="detail_p">{{item?.detail}}</p>
+            </div>
+          </div>
+          <ion-row class="ion-margin-horizontal margin-top">
+            <ion-col class="ion-no-padding">
+              <p class="time_p">Date:<span> {{item?.rdate}}</span></p>
+            </ion-col>
+            <ion-col class="ion-no-padding">
+              <p class="time_p">Time: <span> {{item?.time}}</span></p>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-margin-horizontal margin-bottom">
+            <ion-col class="ion-no-padding">
+              <p class="time_p">ID No:<span> {{item?.id}}</span></p>
+            </ion-col>
+            <ion-col class="ion-no-padding">
+              <p class="time_p">Payment Method: <span> {{item?.payment}}</span></p>
+            </ion-col>
+          </ion-row>
+
+          <div class="md-stepper-horizontal process_div">
+            <div class="md-step active done">
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-circle">
+                <ion-icon name="checkmark" mode="md"></ion-icon>
+              </div>
+              <div class="md-step-title">Post Request</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step  editable">
+              <div class="md-step-circle"></div>
+              <div class="md-step-title">Approved</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step ">
+              <div class="md-step-circle"></div>
+              <div class="md-step-title">Work Done</div>
+              <div class="md-step-bar-left"></div>
+              <div class="md-step-bar-right"></div>
+            </div>
+            <div class="md-step last_status">
+              <div class="md-step-circle"><span></span></div>
+              <div class="md-step-title">Payment</div>
+              <div class="md-step-bar-left last_bar"></div>
+              <div class="md-step-bar-right last_bar"></div>
+            </div>
+          </div>
+
+          <div class="btn_div ion-margin-horizontal" *ngIf="item.btn_div">
+            <ion-button class="cancel_btn" *ngIf="!cancel" (click)="cancel=true">
+              <ion-icon name="close"></ion-icon>
+            </ion-button>
+            <div class="all_request" *ngIf="!cancel" (click)="serviceProvider()">
+              <p class="post_p">View Post Request <span class="ion-float-right">14</span></p>
+            </div>
+            <div class="cancel_div" *ngIf="cancel">
+              <p class="want_to">Want To Cancel <ion-button class="ion-float-right yes_btn">Yes</ion-button>
+                <ion-button class="ion-float-right no_btn">No</ion-button>
+              </p>
+            </div>
+            <ion-button class="total_btn" *ngIf="cancel">19</ion-button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+</ion-content>

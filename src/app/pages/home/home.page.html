@@ -1,0 +1,38 @@
+<ion-header no-border>
+  <ion-toolbar color="primary" mode="md">
+    <img src="../../../assets/image/logo.png" style="margin-left: 30%;">
+    <ion-buttons slot="end">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>    
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content>
+  <p class="ion-padding-horizontal first_p">100+ PROVIDEROS DE SERVICIO
+    <!-- <span class="ion-float-right">
+      <ion-icon src="assets/icon-image/controls.svg"></ion-icon>
+      FILTER
+    </span> -->
+  </p>
+  <div class="img_div">
+    <p class="text">Encuentra un Servicio y agendalo fácil</p>
+    <img src="assets/icon-image/home_layer03.svg">
+  </div>
+  <div class="ion-margin-horizontal service_div">
+    <p class="service_p">SERVICIOS POR CATEGORIA
+      <!-- <span class="ion-float-right">See all</span> -->
+    </p>
+    <ion-row>
+      <ion-col *ngFor="let category of categories" (click)="locationRadio(category)">
+        <div  class="treading" *ngIf="category.tag">
+          <span style="background-color: red;" >{{category.tag}}</span>
+        </div >
+        <div class="icon_div">
+          <img src="{{category.image}}">
+        </div>
+        <p class="name_p">{{category.name}}</p>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

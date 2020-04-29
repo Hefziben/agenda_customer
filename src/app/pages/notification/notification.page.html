@@ -1,0 +1,26 @@
+<ion-header no-border>
+  <ion-toolbar color="primary" mode="md">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/home" icon="ios-arrow-back" text="" mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="color: white;" >Notificaciones</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="main_div ion-margin-horizontal">
+    <div class="card_div" *ngFor="let item of notifications">
+      <div class="img_div">
+        <img style="margin-top: 15px;"  [src]="item.image">
+      </div>
+      <div class="data_div">
+        <h3 class="name">{{item?.name}}</h3>
+        <p class="type">{{item?.title}}</p>
+        <p class="type"><span>{{item?.body}}</span></p>
+      </div>
+    </div>
+  </div>
+</ion-content>

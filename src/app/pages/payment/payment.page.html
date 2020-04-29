@@ -1,0 +1,159 @@
+<ion-header no-border>
+  <ion-toolbar color="primary" mode="md">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/home" icon="ios-arrow-back" text="" mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="color: white;">payment</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="current_div">
+    <div class="data_div">
+      <p class="rtype_p">{{data?.type}}</p>
+      <div class="user_div ion-margin-horizontal">
+        <div class="img_div">
+          <img [src]="data.image">
+        </div>
+        <div class="detail_div">
+          <p class="name_p">{{data?.name}} <span class="ion-float-right">{{data?.date}}</span></p>
+          <p class="detail_p">{{data?.detail}}</p>
+        </div>
+      </div>
+      <ion-row class="ion-margin">
+        <ion-col size="6" class="ion-no-padding">
+          <p class="time_p">Date:<span> {{data?.rdate}}</span></p>
+        </ion-col>
+        <ion-col size="6" class="ion-no-padding">
+          <p class="time_p">Time: <span> {{data?.Stime}} To {{data?.Etime}}</span></p>
+        </ion-col>
+
+        <ion-col size="6" class="ion-no-padding">
+          <p class="time_p">ID No:<span> {{data?.id}}</span></p>
+        </ion-col>
+        <ion-col size="6" class="ion-no-padding">
+          <p class="time_p">Payment Method: <span> {{data?.payment}}</span></p>
+        </ion-col>
+
+        <ion-col size="6" class="ion-no-padding">
+          <p class="time_p">Fare:<span> {{data?.fare}}</span></p>
+        </ion-col>
+        <ion-col size="6" class="ion-no-padding">
+          <p class="time_p">Total Time: <span> {{data?.totalTime}}</span></p>
+        </ion-col>
+
+        <ion-col size="6" class="ion-no-padding">
+          <p class="time_p">Pay:<span> ${{data?.pay}}</span></p>
+        </ion-col>
+      </ion-row>
+      <div class="md-stepper-horizontal orange">
+        <div class="md-step active done">
+          <div class="md-step-bar-left"></div>
+          <div class="md-step-circle">
+            <ion-icon name="checkmark" mode="md"></ion-icon>
+          </div>
+          <div class="md-step-title">Post Request</div>
+          <div class="md-step-bar-left"></div>
+          <div class="md-step-bar-right"></div>
+        </div>
+        <div class="md-step active editable">
+          <div class="md-step-circle">
+            <ion-icon name="checkmark" mode="md"></ion-icon>
+          </div>
+          <div class="md-step-title">Approved</div>
+          <div class="md-step-bar-left"></div>
+          <div class="md-step-bar-right"></div>
+        </div>
+        <div class="md-step active workdone">
+          <div class="md-step-circle">
+            <ion-icon name="checkmark" mode="md"></ion-icon>
+          </div>
+          <div class="md-step-title">Work Done</div>
+          <div class="md-step-bar-left"></div>
+          <div class="md-step-bar-right"></div>
+        </div>
+        <div class="md-step last_status">
+          <div class="md-step-circle"><span></span></div>
+          <div class="md-step-title">Payment</div>
+          <div class="md-step-bar-left last_bar"></div>
+          <div class="md-step-bar-right last_bar"></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col_div" *ngIf="showReview">
+
+      <ion-label class="card_label">
+        CARD NUMBER
+      </ion-label>
+      <ion-item lines="none">
+        <ion-input placeholder="Card Number" name="cardnumber" id="card-no" type="tel" maxlength="22">
+        </ion-input>
+        <div class="check_div">
+          <ion-icon name="checkmark"></ion-icon>
+        </div>
+      </ion-item>
+      <ion-row>
+        <ion-col class="ion-no-padding" size="6">
+          <ion-label class="card_label">
+            EXPRIRATION DATE
+          </ion-label>
+          <ion-item lines="none">
+            <ion-input placeholder="10/22" id="exp-date" name="exp_date" maxlength="5">
+            </ion-input>
+            <div class="check_div">
+              <ion-icon name="checkmark"></ion-icon>
+            </div>
+          </ion-item>
+        </ion-col>
+
+        <ion-col class="ion-no-padding" size="5" offset="1">
+          <ion-label class="card_label">
+            CVV
+          </ion-label>
+          <ion-item lines="none">
+            <ion-input value="****" type="tel" name="cvv" maxlength="4">
+            </ion-input>
+            <div class="check_div">
+              <ion-icon name="checkmark"></ion-icon>
+            </div>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-label class="card_label">
+        CARD HOLDER'S NAME
+      </ion-label>
+      <ion-item lines="none">
+        <ion-input value="Randy Betancourt">
+        </ion-input>
+        <div class="check_div">
+          <ion-icon name="checkmark"></ion-icon>
+        </div>
+      </ion-item>
+    </div>
+    <div class="success_div ion-margin-horizontal" *ngIf="success">
+      <div class="congratulation">
+        <img src="assets/icon-image/right-img.svg">
+
+        <h3 class="name">Congratulations</h3>
+        <p class="text">Your Payment Successful Send</p>
+        <p class="star_p">
+          <ion-icon [name]="rate >= 1 ? 'star':'star-outline'" (click)="rate=1"></ion-icon>
+          <ion-icon [name]="rate >= 2 ? 'star':'star-outline'" (click)="rate=2"></ion-icon>
+          <ion-icon [name]="rate >= 3 ? 'star':'star-outline'" (click)="rate=3"></ion-icon>
+          <ion-icon [name]="rate >= 4 ? 'star':'star-outline'" (click)="rate=4"></ion-icon>
+          <ion-icon [name]="rate >= 5 ? 'star':'star-outline'" (click)="rate=5"></ion-icon>
+        </p>
+      </div>
+      <p class="review_p">Review</p>
+      <ion-textarea rows="5"></ion-textarea>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-button class="otp_btn" *ngIf="showReview" (click)="showReview=false;success=true">Pay $12</ion-button>
+  <ion-button class="otp_btn" *ngIf="success" (click)="setting()"> Send</ion-button>
+</ion-footer>

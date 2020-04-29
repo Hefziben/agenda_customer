@@ -1,0 +1,37 @@
+<ion-header no-border>
+  <ion-toolbar mode="md">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/home" icon="ios-arrow-back" text="" mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Appliance Repair</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-searchbar clearIcon="string" searchIcon="../../assets/icon-image/search-engine.svg"
+    placeholder="Search for Sevice Provider"></ion-searchbar>
+</ion-header>
+
+<ion-content>
+  <div class="best_div">
+    <div class="tittle_div">
+      <h3 class="tittle">Best services</h3>
+    </div>
+    <ion-item *ngFor="let item of data?.best" class="item_div" (click)="provider()">
+      <ion-icon [src]="item?.image" slot="start" class="item_icon">
+      </ion-icon>
+      <ion-label class="name">{{item?.name}}</ion-label>
+      <ion-icon class="arrow-icon" name="ios-arrow-forward"></ion-icon>
+    </ion-item>
+  </div>
+  <div class="best_div">
+    <div class="tittle_div">
+      <h3 class="tittle">Explore services <span class="ion-float-right">A to Z</span></h3>
+    </div>
+    <ion-item *ngFor="let item of data?.explore" class="item_div" (click)="provider()">
+      <ion-icon [src]="item?.image" slot="start" class="item_icon"></ion-icon>
+      <ion-label class="name">{{item?.name}}</ion-label>
+      <ion-icon class="arrow-icon" name="ios-arrow-forward"></ion-icon>
+    </ion-item>
+  </div>
+</ion-content>

@@ -1,0 +1,62 @@
+<ion-header no-border class="header_div">
+  <ion-toolbar color="primary" mode="md">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/home" icon="ios-arrow-back" text="" mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="color: white;" *ngIf="!isjobpost">Detalles</ion-title>
+    <ion-title *ngIf="isjobpost">job post</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form>
+    <p class="text_p">Servicio</p>
+    <ion-item class="item_div" lines="none">
+           <ion-input style="font-size: 16px;font-weight: 600;" required type="text" [value]="service.service" readonly="true" class="input_service"></ion-input>
+   
+    </ion-item>
+    <p class="text_p">Precio del servicio</p>
+    <ion-item class="item_div" lines="none">
+      <p>$</p>
+      <ion-input style="font-size: 16px;font-weight: 600;" required type="text" [value]="service.price" class="input_service"></ion-input>
+    </ion-item>
+    <p class="text_p">Descripción (opcional)</p>
+    <ion-textarea style="font-size: 16px;" rows="4" class="ion-margin-horizontal text_area" (ionChange)="getDesc($event)" ></ion-textarea> 
+  </form>
+  <!-- <p class="text_p">Add Image</p>
+  <div class="img_div_service ion-margin-horizontal">
+    <img src="assets/icon-image/ac.svg">
+    <div class="upload_div">
+      <ion-icon name="add-circle-outline"></ion-icon>
+    </div>
+    <div class="upload_div">
+      <ion-icon name="add-circle-outline"></ion-icon>
+    </div>
+  </div> -->
+  <p class="text_p">Seleccio el día y la hora</p>
+  <div class="calnder_div ion-margin-horizontal">
+
+    <p class="view_p"> {{viewTitle}}</p>
+    <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
+      (onCurrentDateChanged)="onCurrentDateChanged($event)" (onEventSelected)="onEventSelected($event)"
+      (onTitleChanged)="onViewTitleChanged($event)" (onTimeSelected)="onTimeSelected($event)" step="30"
+      [monthviewEventDetailTemplate]="slot">
+    </calendar>
+
+    <ng-template #slot let-showEventDetail="showEventDetail" let-selectedDate="selectedDate">
+      <p class="select_p">Escoger Hora</p>
+      <div class="time_slot">
+        <span *ngFor="let item of data?.timeSlot" (click)="setTimeSlot(item)" [ngClass]="{'active': activeSlot==item}">
+          {{item}}
+        </span>
+      </div>
+    </ng-template>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-button class="otp_btn" (click)="Booking()">
+    Procesar 
+  </ion-button>
+</ion-footer>

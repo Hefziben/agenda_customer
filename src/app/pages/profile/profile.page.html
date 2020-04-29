@@ -1,0 +1,70 @@
+<ion-header *ngIf="content" no-border>
+  <ion-toolbar mode="md">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/home" icon="ios-arrow-back" text="" mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button *ngIf="editbtn==0" (click)="editData()">
+        <ion-icon src="assets/icon-image/edit.svg"></ion-icon>
+      </ion-button>
+      <ion-button class="btn-save" *ngIf="editbtn==1" (click)="saveData()">
+        Guardar
+      </ion-button>
+
+    </ion-buttons>
+
+  </ion-toolbar>
+  <div class="fileUpload btn btn-primary">
+    <ion-icon  slot="start" name="camera"></ion-icon>
+    <input readonly="editbtn == 0 ? 'true':'false'" (change)="selectImage2($event)" type="file" class="upload" />
+</div>
+
+ 
+  <div class="square">
+    <div class="pic">
+      <!-- <img
+        src="https://images.pexels.com/photos/1308881/pexels-photo-1308881.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"> -->
+        <img src={{user.image}}>
+        
+    </div>
+
+  </div>
+
+  <h3 class="name">{{user.name}}</h3>
+  <!-- <p class="email">harrygarrett@gmail.com</p> -->
+</ion-header>
+
+<ion-content *ngIf="content" >
+  <form [formGroup]="userForm" class="ion-margin-horizontal">
+    <ion-item lines="none" class="item_div">
+      <ion-label  position="stacked" class="lbl_name" mode="md">Nombre</ion-label>
+      <ion-input (ionChange)="changedName($event)" formControlName="name" required type="text" [value]="user?.name" [readonly]="editbtn == 0 ? 'true':'false'"></ion-input>
+    </ion-item>
+    <!-- <ion-item lines="none" class="item_div">
+      <ion-label position="stacked" class="lbl_name" mode="md">Email</ion-label>
+      <ion-input required type="text" [value]="data?.email" [readonly]="editbtn == 0 ? 'true':'false'"></ion-input>
+    </ion-item> -->
+    <ion-item lines="none" class="item_div">
+      <ion-label position="stacked" class="lbl_name" mode="md">Teléfono</ion-label>
+      <ion-row>
+        <p>+</p>
+        <ion-input required type="text" [value]="user?.user" [readonly]="editbtn == 0 ? 'true':'true'"></ion-input>
+      </ion-row>
+    </ion-item>
+    <ion-item style="width: 100%;" lines="none" class="item_div">
+      <div style="width: 100%;display: flex;flex-direction: row;">
+        <ion-label position="stacked" class="lbl_name" style="flex:1;padding: 0;margin: 0;height: fit-content;" mode="md">Dirección<nav></nav></ion-label>
+        <ion-button fill="clear" style="width: 45px;object-fit: contain;" (click)="newAddress()">
+          <ion-icon slot="icon-only" name="add"></ion-icon>
+        </ion-button>
+      </div>
+
+      <div style="width: 100%;margin-top: 10px;" *ngFor="let address of addressList;let i = index">
+        <ion-badge color="success">{{address.tag}} </ion-badge>
+        <ion-textarea formControlName="address" (ionChange)="changed($event ,i)" type="text"  [value]="address.detail" [readonly]="editbtn == 0 ? 'true':'false'"></ion-textarea>
+        <ion-input type="text" [value]="address.address" [readonly]="true"></ion-input>
+      </div>
+ 
+    </ion-item>
+  </form>
+</ion-content>

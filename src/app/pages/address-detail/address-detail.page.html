@@ -1,0 +1,45 @@
+  <ion-content >
+   <agm-map [latitude]="lat" [longitude]="lan" [zoom]="15">
+    <agm-marker
+      [latitude]="lat"
+      [longitude]="lan"
+      (markerClick)="onMarkerClick()"
+    ></agm-marker>
+  </agm-map> 
+<ion-grid style="margin: 15px 0 10px 0;" fixed>
+
+  <ion-row [formGroup]="addressForm">
+    
+      <ion-col size="12">
+        <ion-label style="margin-left: 5px; font-size: 14px;text-transform: uppercase;font-weight: bold;" >Tu ubicación</ion-label>
+        <ion-row style="display: flex;flex-direction: row;justify-content: center;align-items: center;">
+          <ion-col size="9">
+            <ion-textarea formControlName="address" style="border-bottom: solid lightgray 1px;font-size: 15px;word-wrap: initial;" type="text" value="{{address}}"></ion-textarea>
+          </ion-col>
+          <ion-col size="3">
+          <ion-button (click)="goBack()" expand="block" fill="clear" size="small" style="border: solid 1px lightgrey;margin-top: -5px;">
+            Cambiar
+          </ion-button>
+          </ion-col>
+        </ion-row>
+        
+      </ion-col>
+      <ion-col size="12">
+        <ion-label style="margin-left: 5px; font-size: 15px;" >Dirección</ion-label>
+        <p *ngIf="submitted && !addressForm.value.addressDetail" style="color: var(--ion-color-danger); font-size: 12px;margin-left: 5px;" >Este campo es requerido</p>
+        <ion-input formControlName="addressDetail" style="border-bottom: solid lightgray 1px;" type="text" placeholder="dirección específica" ></ion-input>
+      
+      </ion-col>
+      <ion-col size="12">
+        <ion-label style="margin-left: 5px; font-size: 14px;" >Etiqueta</ion-label>
+        <ion-input formControlName="tag" style="border-bottom: solid lightgray 1px;" type="text" placeholder="Ej: Casa, Oficina"></ion-input>
+        </ion-col>
+      </ion-row>
+</ion-grid>
+
+</ion-content>
+<ion-footer  >
+  <ion-button style="padding: 0;margin: 0;height: 55px;font-size: 16px;" (click)="saveAddress()" expand="full" >
+    Guardar Dirección
+  </ion-button>
+</ion-footer>

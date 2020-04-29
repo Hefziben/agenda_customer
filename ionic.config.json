@@ -1,0 +1,7 @@
+{
+  "name": "Workezy",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,165 @@
+/** Ionic CSS Variables **/
+:root {
+  /** primary **/
+  --ion-color-primary:#7a57d1;
+  --ion-color-primary-rgb: 56, 128, 255;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #6b4db8  ;
+  --ion-color-primary-tint: #8768d6;
+  /** secondary **/
+  --ion-color-secondary: #0cd1e8;
+  --ion-color-secondary-rgb: 12, 209, 232;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #0bb8cc;
+  --ion-color-secondary-tint: #24d6ea;
+  /** tertiary **/
+  --ion-color-tertiary: #7044ff;
+  --ion-color-tertiary-rgb: 112, 68, 255;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #633ce0;
+  --ion-color-tertiary-tint: #7e57ff;
+  /** success **/
+  --ion-color-success: #10dc60;
+  --ion-color-success-rgb: 16, 220, 96;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #0ec254;
+  --ion-color-success-tint: #28e070;
+  /** warning **/
+  --ion-color-warning: #ffce00;
+  --ion-color-warning-rgb: 255, 206, 0;
+  --ion-color-warning-contrast: #ffffff;
+  --ion-color-warning-contrast-rgb: 255, 255, 255;
+  --ion-color-warning-shade: #e0b500;
+  --ion-color-warning-tint: #ffd31a;
+  /** danger **/
+  --ion-color-danger: #f04141;
+  --ion-color-danger-rgb: 245, 61, 61;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #d33939;
+  --ion-color-danger-tint: #f25454;
+  /** dark **/
+  --ion-color-dark: #222428;
+  --ion-color-dark-rgb: 34, 34, 34;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #1e2023;
+  --ion-color-dark-tint: #383a3e;
+  /** medium **/
+  --ion-color-medium: #989aa2;
+  --ion-color-medium-rgb: 152, 154, 162;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #86888f;
+  --ion-color-medium-tint: #a2a4ab;
+  /** light **/
+  --ion-color-light: #f4f5f8;
+  --ion-color-light-rgb: 244, 244, 244;
+  --ion-color-light-contrast: #000000;
+  --ion-color-light-contrast-rgb: 0, 0, 0;
+  --ion-color-light-shade: #d7d8da;
+  --ion-color-light-tint: #f5f6f9;
+  --ion_color_main: #7a57d1;
+  --ion_dark_blue: #29335c;
+  --ion_gray: #bbbbbb;
+  --ion_btn_blue: #3b5998;
+  --ion_btn_google: #cc3333;
+  --ion_btn_twiter: #00acee;
+  --ion_color_blue: #2196f3;
+  --ion_white: #ffffff;
+  --ion_dark_gray: #b5b5b5;
+  --ion_search_pace: #c6cbdf;
+  --ion_black: #333333;
+  --ion_trending: #fc5759;
+  --ion_type_gray: #b5b4be;
+  --ion_yellow: #e8c100;
+  --ion_star: #cfcfcf;
+  --ion_red: #ff2e31;
+  --ion_green: #2f8200;
+  --ion_light_green: #00ae4d;
+  --ion_border: #e5e5e5;
+  --ion_sky: #f4f7f9;
+  --ion_back: #eff1f8;
+  --ion_dark_gray: #959595;
+  --ion_check_green: #599a30;
+  --ion_card_border: #d4d4d4;
+  --ion_stepper: #c6cbdf;
+  --ion_img_icon: #f0f0f2;
+  --ion_ccc_color: #ccc;
+  --ion_dark_red: #d21618;
+}
+
+@font-face {
+  font-family: 'Roboto_Bold';
+  src: url("../assets/Fonts/Roboto/Roboto-Bold.ttf");
+}
+
+@font-face {
+  font-family: 'Roboto_Medium';
+  src: url("../assets/Fonts/Roboto/Roboto-Medium.ttf");
+}
+
+@font-face {
+  font-family: 'Roboto_Regular';
+  src: url("../assets/Fonts/Roboto/Roboto-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'Roboto_Italic';
+  src: url("../assets/Fonts/Roboto/Roboto-Italic.ttf");
+}
+
+@font-face {
+  font-family: 'Roboto_MediumItalic';
+  src: url("../assets/Fonts/Roboto/Roboto-MediumItalic.ttf");
+}
+
+@font-face {
+  font-family: 'Changa_Regular';
+  src: url("../assets/Fonts/Changa/Changa-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'Changa_Medium';
+  src: url("../assets/Fonts/Changa/Changa-Medium.ttf");
+}
+
+@font-face {
+  font-family: 'Poppins-Medium';
+  src: url("../assets/Fonts/Poppins/Poppins-Medium.ttf");
+}
+
+@font-face {
+  font-family: 'HamburgerHeaven';
+  src: url("../assets/Fonts/HamburgerHeaven/hambh__.ttf");
+}
+
+@font-face {
+  font-family: 'Helvetica-Neue';
+  src: url("../assets/Fonts/helvetica/HelveticaNeue-MediumCond.otf");
+}
+
+.alert-wrapper {
+  --min-width: 80%;
+}
+
+.alert-wrapper .alert-radio-label {
+  white-space: inherit;
+}
+
+.alert-wrapper .alert-button-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+/*# sourceMappingURL=variables.css.map */

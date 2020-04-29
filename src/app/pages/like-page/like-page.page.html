@@ -1,0 +1,73 @@
+<ion-header no-border>
+  <ion-toolbar mode="md">
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/home" icon="ios-arrow-back" text="" mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Service Provider</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-row class="ion-no-padding">
+    <ion-col (click)="chageTab('Active')">
+      <div class="btn-div " [ngClass]="{ active: activeTab == 'Active' }">
+        Liked
+      </div>
+    </ion-col>
+    <ion-col (click)="chageTab('Completed')">
+      <div class="dot_div"></div>
+      <div class="btn-div" [ngClass]="{ active: activeTab == 'Completed' }">
+        Blocked
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-header>
+
+<ion-content>
+  <ng-container [ngSwitch]="activeTab">
+    <ng-container *ngSwitchCase="'Active'">
+      <div class="data_div">
+        <ion-item *ngFor="let item of data?.liked" (click)="provide_detail()">
+          <img [src]="item?.image" slot="start">
+          <ion-label>
+            <h3 class="name">{{item?.name}} <span class="ion-float-right">
+                <ion-icon name="heart" class="heart"></ion-icon>
+              </span></h3>
+            <h3 class="type">{{item?.type}} </h3>
+            <p class="rate">
+              <ion-icon name="star" [class]="item?.rate >=1 ? 'icon_color':'icon_deafault'"></ion-icon>
+              <ion-icon name="star" [class]="item?.rate >=2 ? 'icon_color':'icon_deafault'"></ion-icon>
+              <ion-icon name="star" [class]="item?.rate >=3 ? 'icon_color':'icon_deafault'"></ion-icon>
+              <ion-icon name="star" [class]="item?.rate >=4 ? 'icon_color':'icon_deafault'"></ion-icon>
+              <ion-icon name="star" [class]="item?.rate >=5 ? 'icon_color':'icon_deafault'"></ion-icon>
+              <span class="review">{{item?.review}} Review</span>
+            </p>
+          </ion-label>
+        </ion-item>
+      </div>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'Completed'">
+      <div class="data_div">
+        <ion-item *ngFor="let item of data?.liked" (click)="provide_detail()">
+          <img [src]="item?.image" slot="start">
+          <ion-label>
+            <h3 class="name">{{item?.name}} <span class="ion-float-right">
+                <ion-icon src="assets/icon-image/block-img.svg"></ion-icon>
+              </span></h3>
+            <h3 class="type">{{item?.type}} </h3>
+            <p class="rate">
+              <ion-icon name="star" [class]="item?.rate >=1 ? 'icon_color':'icon_deafault'"></ion-icon>
+              <ion-icon name="star" [class]="item?.rate >=2 ? 'icon_color':'icon_deafault'"></ion-icon>
+              <ion-icon name="star" [class]="item?.rate >=3 ? 'icon_color':'icon_deafault'"></ion-icon>
+              <ion-icon name="star" [class]="item?.rate >=4 ? 'icon_color':'icon_deafault'"></ion-icon>
+              <ion-icon name="star" [class]="item?.rate >=5 ? 'icon_color':'icon_deafault'"></ion-icon>
+              <span class="review">{{item?.review}} Review</span>
+            </p>
+          </ion-label>
+        </ion-item>
+      </div>
+    </ng-container>
+  </ng-container>
+</ion-content>

@@ -1,0 +1,474 @@
+ion-content {
+  position: relative;
+}
+
+ion-content ion-header {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+ion-content ion-header ion-toolbar {
+  --background: transparent;
+  --ion-color-base: transparent !important;
+  -webkit-transform-style: flat;
+          transform-style: flat;
+  -webkit-transition: background-color 0.5s ease-in 0.5s;
+  transition: background-color 0.5s ease-in 0.5s;
+}
+
+ion-content ion-header ion-toolbar ion-buttons ion-menu-button {
+  color: var(--ion_white) !important;
+}
+
+ion-content ion-header ion-toolbar ion-buttons ion-back-button {
+  color: var(--ion_white);
+}
+
+ion-content .img_div {
+  position: relative;
+}
+
+ion-content .img_div img {
+  width: -webkit-fill-available;
+}
+
+ion-content .img_div .name_div {
+  position: absolute;
+  padding: 0 16px;
+  bottom: 0;
+  width: 100%;
+}
+
+ion-content .img_div .name_div .name {
+  font-family: 'Roboto_Medium';
+  font-size: 14px;
+  color: var(--ion_white);
+  margin-bottom: 15px;
+}
+
+ion-content .img_div .name_div .name ion-icon {
+  color: var(--ion_red);
+  font-size: 22px;
+  margin-top: -5px;
+}
+
+ion-content .menu_div {
+  position: relative;
+  margin-top: 15px;
+  padding-bottom: 10px;
+}
+
+ion-content .menu_div .tittle {
+  font-size: 16px;
+  font-family: 'Roboto_Medium';
+  color: var(--ion_color_main);
+  margin: 0px;
+}
+
+ion-content .menu_div .address {
+  width: 280px;
+  font-size: 12px;
+  font-family: 'Roboto_Regular';
+  color: var(--ion_type_gray);
+  margin: 5px 0px 4px 0px;
+}
+
+ion-content .menu_div .schedule {
+  font-size: 12px;
+  font-family: 'Roboto_Regular';
+  margin: 5px 0px 4px 0px;
+}
+
+ion-content .menu_div .open {
+  font-size: 12px;
+  font-family: 'Roboto_Regular';
+  color: var(--ion_color_main);
+  margin: 4px 0px;
+}
+
+ion-content .menu_div .open span {
+  color: var(--ion_type_gray);
+}
+
+ion-content .menu_div .confirm {
+  font-size: 12px;
+  font-family: 'Roboto_Regular';
+  color: var(--ion_red);
+  margin: 4px 0px;
+}
+
+ion-content .menu_div .text {
+  font-size: 12px;
+  font-family: 'Roboto_Regular';
+  color: var(--ion_type_gray);
+  margin: 0px;
+}
+
+ion-content .menu_div .four {
+  position: absolute;
+  top: 5px;
+  right: 0;
+}
+
+ion-content .menu_div .four .first_div {
+  height: 24px;
+  width: 30px;
+  background-color: var(--ion_color_main);
+  border-radius: 2px 2px 0px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 4px;
+}
+
+ion-content .menu_div .four .first_div span {
+  font-size: 13px;
+  font-family: 'Roboto_Regular';
+  color: var(--ion_white);
+}
+
+ion-content .menu_div .four .last_div {
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.16);
+          box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.16);
+  height: 26px;
+  width: 30px;
+  border-radius: 0px 0px 2px 2px;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+ion-content .menu_div .four .last_div .ascii {
+  font-size: 10px;
+  font-family: 'Roboto_Regular';
+  margin-top: 2.5px;
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+ion-content .menu_div .four .last_div .review {
+  font-family: 'Roboto_Regular';
+  font-size: 8px;
+  color: var(--ion_dark_gray);
+  text-align: center;
+  margin: 0px;
+}
+
+ion-content .border_div {
+  border-top: solid 3px var(--ion_color_main);
+}
+
+ion-content ion-range {
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  --bar-background: var(--ion_stepper);
+  --bar-background-active: var(--ion_color_main);
+  --bar-height: 4px;
+  --knob-background: var(--ion_color_main);
+  --pin-background: var(--ion_color_main);
+  --knob-size: 39px;
+}
+
+ion-content .rating_div {
+  margin-top: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 16px;
+  border-top: dashed 1px var(--ion_border);
+}
+
+ion-content .rating_div .first_col {
+  width: 30%;
+}
+
+ion-content .rating_div .first_col .rate {
+  font-size: 13px;
+  font-family: 'Roboto_Regular';
+  color: var(--ion_type_gray);
+  margin: 0px;
+  text-align: center;
+}
+
+ion-content .rating_div .first_col .rate ion-icon {
+  color: var(--ion_yellow);
+}
+
+ion-content .rating_div .first_col .on {
+  color: var(--ion_color_main);
+}
+
+ion-content .rating_div .first_col .complete {
+  color: var(--ion_green);
+}
+
+ion-content .rating_div .first_col .cancel {
+  color: var(--ion_red);
+}
+
+ion-content .rating_div .first_col .rating {
+  margin-top: 3px;
+  font-size: 11px;
+  font-family: 'Roboto_Regular';
+  text-align: center;
+  color: var(--ion_type_gray);
+}
+
+ion-content .rating_div .dot_div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: -13px;
+  width: 5% !important;
+}
+
+ion-content .rating_div .dot_div .dot {
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+  background-color: var(--ion_color_main);
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+ion-content .second_review {
+  border-top: none;
+  padding-top: 0px;
+  border-bottom: dashed 1px var(--ion_border);
+}
+
+ion-content .sentence {
+  padding: 13px 16px;
+  background-color: var(--ion_color_main);
+}
+
+ion-content .sentence .loram_p {
+  font-size: 12px;
+  font-family: 'Roboto_Regular';
+  color: var(--ion_white);
+  text-align: center;
+  margin: 0px;
+  line-height: 17px;
+}
+
+ion-content .photo_p {
+  font-size: 16px;
+  color: var(--ion_dark_blue);
+  font-family: 'Roboto_Medium';
+  padding-left: 16px;
+}
+
+ion-content .photos_div {
+  padding-left: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-y: auto;
+}
+
+ion-content .photos_div img {
+  margin-right: 10px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.3);
+}
+
+ion-content .photos_div::-webkit-scrollbar {
+  display: none;
+}
+
+ion-content .review_div {
+  margin-bottom: 20px;
+}
+
+ion-content .review_div .p_text {
+  font-size: 16px;
+  color: var(--ion_dark_blue);
+  font-family: 'Roboto_Medium';
+}
+
+ion-content .review_div .yes_div {
+  margin-top: 10px;
+}
+
+ion-content .review_div .yes_div .yes_p {
+  font-size: 14px;
+  font-family: 'Poppins-Medium';
+  color: var(--ion_dark_blue);
+}
+
+ion-content .review_div .yes_div .yes_p .yes_btn {
+  --background: var(--ion_color_main);
+  margin-right: 10px;
+}
+
+ion-content .review_div .yes_div .yes_p .no_btn {
+  --background: var(--ion_red);
+}
+
+ion-content .review_div .yes_div .yes_p ion-button {
+  height: 20px;
+  width: 50px;
+  font-size: 10px;
+  --color: var(--ion_white);
+  --box-shadow: none;
+  --border-radius: 10px;
+  margin: 0px;
+}
+
+ion-content .review_div .review_item ion-avatar {
+  -ms-flex-item-align: baseline;
+      align-self: baseline;
+}
+
+ion-content .review_div .review_item ion-avatar img {
+  border: solid 3px var(--ion_white);
+  -webkit-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.6);
+          box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.6);
+}
+
+ion-content .review_div .review_item ion-label {
+  white-space: normal;
+}
+
+ion-content .review_div .review_item ion-label .name {
+  font-size: 13px;
+  font-family: 'Roboto_Medium';
+  color: var(--ion_dark_blue);
+  margin: 0;
+}
+
+ion-content .review_div .review_item ion-label .ago {
+  font-size: 12px;
+  font-family: 'Roboto_Medium';
+  color: var(--ion_type_gray);
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+ion-content .review_div .review_item ion-label .detail {
+  font-size: 11px;
+  font-family: 'Roboto_Regular';
+  color: var(--ion_type_gray);
+  margin: 8px 0px 0px;
+  line-height: 15px;
+}
+
+ion-content .review_div .review_item ion-label .first_icon {
+  color: var(--ion_yellow);
+}
+
+ion-content .review_div .review_item ion-label .last_icon {
+  color: var(--ion_star);
+}
+
+ion-content .review_div .last_div {
+  height: 36px;
+  background-color: var(--ion_sky);
+  border-radius: 18px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  padding: 12px 15px 0px 15px;
+}
+
+ion-content .review_div .last_div .last_p {
+  font-size: 12px;
+  margin: 0px;
+  font-family: 'Roboto_Medium';
+  color: var(--ion_dark_blue);
+}
+
+.servicios {
+  margin: 5px;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.name {
+  font-size: 16px;
+  color: var(--ion_dark_blue);
+  font-family: 'Roboto_Medium';
+}
+
+.name span {
+  font-size: 14px;
+}
+
+.center-item {
+  margin-right: 40px;
+}
+
+.price {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.type {
+  font-size: 12px;
+  color: var(--ion_type_gray);
+  margin: 0px;
+}
+
+.data_div {
+  margin-top: 20px;
+}
+
+.data_div ion-item {
+  --inner-padding-end: 0px;
+}
+
+.data_div ion-item img {
+  margin-right: 15px;
+  border-radius: 5px;
+  width: 70px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.data_div ion-item .rate .icon_color {
+  color: var(--ion_yellow);
+}
+
+.data_div ion-item .rate .icon_deafault {
+  color: var(--ion_star);
+}
+
+.data_div ion-item .rate ion-icon {
+  height: 14px;
+  width: 14px;
+}
+
+.data_div ion-item .rate .instant {
+  margin-top: 5px;
+  font-weight: bold;
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--ion_color_main);
+  font-family: 'Roboto_Medium';
+}
+
+.data_div ion-item .rate .review {
+  font-size: 13px;
+  color: var(--ion_type_gray);
+  font-family: 'Roboto_Regular';
+  margin-left: 5px;
+}
+/*# sourceMappingURL=provider-detail.page.css.map */

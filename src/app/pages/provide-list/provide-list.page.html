@@ -1,0 +1,119 @@
+<ion-header no-border>
+  <!-- <ion-toolbar mode="md">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/home" icon="ios-arrow-back" text="" mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="!isjobpost">Appliance Repair</ion-title>
+    <ion-title *ngIf="isjobpost">Service Provider</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar> -->
+  <ion-toolbar color="primary" mode="md">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/home" icon="ios-arrow-back" text="" mode="md"></ion-back-button>
+    </ion-buttons>
+    <img src="../../../assets/image/logo.png" style="margin-left: 50px;">
+    <ion-buttons  slot="end">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons >
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  
+  <ng-container >
+    <!-- <ng-container >
+      <div class="data_div">
+        <ion-item *ngIf="chosenProvider" (click)="provide_detail(chosenProvider)">
+          <img [src]="chosenProvider?.image" slot="start">
+          <ion-label>
+            <h3 class="name">{{chosenProvider?.name}} {{chosenProvider?.lastName}} 
+            </h3>
+            <h3 class="type">{{chosenProvider?.type}} </h3>
+            <h3 class="rate">
+              <span *ngIf="chosenProvider?.available" class="name center-item instant">Disponible</span>
+            </h3>
+            <p class="rate">
+              <span class="name" style="font-size: 12px;">Tiempo de respuesta: {{chosenProvider?.responseTime}}</span>  
+            
+
+            </p>
+            <div class="treading" >              
+                <span *ngIf="chosenProvider?.highlighted">Destacado</span>              
+            </div>
+          </ion-label>
+        </ion-item>
+      </div>
+    </ng-container> -->
+    <ion-slides [options]="slideOpts_1" style="padding: 10px;" >
+      <div *ngFor="let item of providers" >
+        <ion-slide
+          style="display: flex;flex-direction: column;" (click)="provide_detail(item)" >
+          <img [src]="item?.image" slot="start" style="object-fit: contain; width: 7.2rem;border-radius: 5px;" alt="">
+          <h3 class="name">{{item.name}} {{item.name}} 
+          </h3>
+          <h3 class="type">{{item.type}} </h3>
+          <h3 class="avail" *ngIf="item?.available">Disponible</h3>
+  
+</ion-slide
+>
+      </div>
+
+    </ion-slides>
+    <ng-container>
+      <ion-item *ngIf="closeProviders" color="primary">
+        <ion-label class="label">Proveedores en tu área</ion-label>
+      </ion-item>
+      <ion-item  *ngIf="noProviders"lines="none" >
+        <ion-label class="label2">No hay provedores en tu área para este servicio. Estamos trabajando en añadir proveedores cerca de ti. Déjamos un mensaje si tienes dudas o sugerencias.</ion-label>
+      </ion-item>
+      <div class="data_div" >
+        <ion-item *ngFor="let item of providers" (click)="provide_detail(item)">
+          <div class="treading">              
+            <span *ngIf="item.highlighted">Destacado</span>              
+        </div>
+
+          <img [src]="item?.image" slot="start">
+          <ion-label>
+            <h3 class="name">{{item?.name}} {{item?.lastName}}
+              <span class="ion-float-right"> ${{item?.price}}</span>
+            </h3>
+
+            <h3 class="type" style="margin-top: 7px;">{{item?.type}} </h3>
+            <p class="rate">
+              <span *ngIf="item?.available" class="name center-item instant">Disponible</span>   
+            </p>  
+            <p class="rate">
+              <span class="name" style="font-size: 12px;">Tiempo de respuesta: {{item?.responseTime}}</span>  
+            </p>
+
+          </ion-label>
+        </ion-item>
+      </div>
+    </ng-container>
+    <!-- <ng-container *ngSwitchCase="'Cancel'">
+      <div class="data_div">
+        <ion-item *ngFor="let item of data?.provider" (click)="provide_detail()">
+                    <img [src]="item?.image" slot="start">
+          <ion-label>
+            <h3 class="name">{{item?.name}} 
+            <span class="ion-float-right"> ${{item?.price}}</span> 
+            </h3>
+            <h3 class="type">{{item?.type}} </h3>
+            <p class="rate">
+             <ion-icon name="star" [class]="item?.rate >=1 ? 'icon_color':'icon_deafault'"></ion-icon>
+              <ion-icon name="star" [class]="item?.rate >=2 ? 'icon_color':'icon_deafault'"></ion-icon>
+              <ion-icon name="star" [class]="item?.rate >=3 ? 'icon_color':'icon_deafault'"></ion-icon>
+              <ion-icon name="star" [class]="item?.rate >=4 ? 'icon_color':'icon_deafault'"></ion-icon>
+              <ion-icon name="star" [class]="item?.rate >=5 ? 'icon_color':'icon_deafault'"></ion-icon>
+              <span class="review">{{item?.review}} Review</span>
+              <span class="ion-float-right instant">{{item?.isAvail}}</span>
+            </p>
+          </ion-label>
+        </ion-item>
+      </div>
+    </ng-container> -->
+  </ng-container>
+</ion-content>

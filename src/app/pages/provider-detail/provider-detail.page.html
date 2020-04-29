@@ -1,0 +1,171 @@
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+  <ion-header no-border>
+    <ion-toolbar [style.backgroundColor]="state == 1 ? '' : 'rgba(0,0,0,0.7)'" mode="md">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="tabs/home" icon="ios-arrow-back" text="" mode="md"></ion-back-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+
+  </ion-header>
+  <div class="img_div">
+    <img style="object-fit: cover;max-height: 250px;" src="{{provider.image}}">
+
+    <div class="name_div">
+      <!-- <h3 class="name"> Trusted by more than +1580 <ion-icon name="heart" class="ion-float-right"></ion-icon>
+      </h3> -->
+    </div>
+  </div>
+
+  <div class="menu_div ion-margin-horizontal">
+    <!-- <div class="four">
+      <div class="first_div">
+        <span>4.0</span>
+      </div>
+      <div class="last_div">
+        <h3 class="ascii">304</h3>
+        <h3 class="review">Review</h3>
+      </div>
+    </div> -->
+    <h3 class="tittle">{{provider.name}} {{provider.lastName}}</h3>
+    <p class="address">{{provider.address.address}} {{provider.address.detail}}</p>
+    <p class="open"> Disponible <span></span></p>
+    <p class="open1"> Tiempo de respuesta: <span>{{provider.responseTime}}</span></p>
+    <p class="schedule"> lunes-viernes: {{provider.schedule.week}}</p >
+      <p class="schedule"> Fin de Semana: {{provider.schedule.weekend}}</p >
+    <!-- <p class="confirm">Confirm booking after cancelation charge $06</p> -->
+    <!-- <p class="text">Success Ratio:</p> -->
+  </div>
+  <ion-range class="range-pressed range-knob-pressed" (ionChange)="changeRange($event)" min="18" max="99" value="90"
+    pin="true" mode="md"></ion-range>
+  <div class="rating_div ion-margin-horizontal">
+    <div class="first_col">
+      <h3 class="rate on">
+        {{jobs?.active}}
+      </h3>
+      <h3 class="rating">en proceso</h3>
+    </div>
+    <div class="first_col ion-text-center dot_div">
+      <div class="dot">
+      </div>
+    </div>
+    <div class="first_col">
+      <h3 class="rate complete">{{jobs?.done}}</h3>
+      <h3 class="rating">Completados</h3>
+    </div>
+    <div class="first_col ion-text-center dot_div">
+      <div class="dot">
+      </div>
+    </div>
+    <div class="first_col">
+      <h3 class="rate cancel">{{jobs?.cancelled}}</h3>
+      <h3 class="rating">Cancelados</h3>
+    </div>
+  </div>
+  <div class="sentence">
+    <p class="loram_p">{{provider.descriprion}}
+    </p>
+  </div>
+  <!-- <div class="rating_div ion-margin-horizontal second_review">
+    <div class="first_col">
+      <h3 class="rate">
+        <ion-icon name="star"></ion-icon>4.0
+      </h3>
+      <h3 class="rating">1580+ rating</h3>
+    </div>
+    <div class="first_col ion-text-center dot_div">
+      <div class="dot">
+      </div>
+    </div>
+    <div class="first_col">
+      <h3 class="rate">{{provider.responseTime}}</h3>
+      <h3 class="rating">Respuesta</h3>
+    </div>
+    <div class="first_col ion-text-center dot_div">
+      <div class="dot">
+      </div>
+    </div>
+    <div class="first_col">
+      <h3 class="rate">{{provider.price}} </h3>
+      <h3 class="rating">Por hora</h3>
+    </div>
+  </div> -->
+  <div *ngIf="provider.galery">
+    <p class="photo_p">Galeria de trabajos</p>
+    <div class="photos_div">
+      <img *ngFor="let item of provider?.galery" [src]="item">
+    </div>
+  </div>
+  
+    <div class="data_div">
+      <ion-item color="light"  lines="none" class="servicios"  *ngFor="let service of provider.services">
+        <!-- <img [src]="item?.image" slot="start"> -->
+        <ion-label>
+          <h3 style="font-size: 20px;" class="name">{{service.service}} 
+            <span class="ion-float-right" style="margin-right: 32px;"> Precio</span>
+          </h3><!-- 
+          <h3 class="type">{{provider.type}} </h3> -->
+          <p class="rate">
+            <span class="instant">Disponible</span>  
+            <span class="ion-float-right name center-item"> ${{service.price}}</span>           
+
+          </p>
+          <p *ngIf="service.description" style="white-space: initial;">
+          {{service.description}} 
+          </p>
+          
+        <ion-button size="medium" style="width: fit-content;margin-left: 30%;" (click)="servie_detail(service)" expand="block" >
+          Agendar
+        </ion-button>
+        </ion-label>
+      </ion-item>
+    </div>
+  <!-- <div class="review_div ">
+    <p class="p_text ion-padding-start">
+      Review
+    </p>
+    <ion-item class="review_item" *ngFor="let item of data?.review" lines='none'>
+      <ion-avatar slot="start">
+        <img [src]="item.image">
+      </ion-avatar>
+      <ion-label>
+        <ion-icon [class]="item.rate >= 5 ? 'first_icon hydrated ion-float-right' :
+                       'last_icon hydrated ion-float-right'" name="star"></ion-icon>
+        <ion-icon [class]="item.rate >= 4 ? 'first_icon hydrated ion-float-right' :
+                          'last_icon hydrated ion-float-right'" name="star"></ion-icon>
+        <ion-icon [class]="item.rate >= 3 ? 'first_icon hydrated ion-float-right' :
+                              'last_icon hydrated ion-float-right'" name="star"></ion-icon>
+        <ion-icon [class]="item.rate >= 2 ? 'first_icon hydrated ion-float-right' :
+                                  'last_icon hydrated ion-float-right'" name="star"></ion-icon>
+        <ion-icon [class]="item.rate >= 1 ? 'first_icon hydrated ion-float-right' :
+                                      'last_icon hydrated ion-float-right'" name="star"></ion-icon>
+        <h3 class="name">{{item?.name}}</h3>
+
+        <h3 class="ago">{{item?.ago}}</h3>
+        <p class="detail">{{item?.detail}}</p>
+        <div class="yes_div" *ngIf="item?.status">
+          <p class="yes_p">Was this helpful?
+            <ion-button class="no_btn ion-float-right ion-text-capitalize">No</ion-button>
+            <ion-button class="yes_btn ion-float-right ion-text-capitalize">Yes</ion-button>
+          </p>
+        </div>
+      </ion-label>
+
+    </ion-item>
+    <div class="last_div ion-margin-horizontal">
+      <p class="last_p">VIEW ALL 95 REVIEW <ion-icon name="ios-arrow-forward" class="ion-float-right"></ion-icon>
+      </p>
+    </div>
+  </div> -->
+
+</ion-content>
+<!-- <ion-footer>
+  <ion-button class="otp_btn" *ngIf="!isjobpost">
+    Continuar
+  </ion-button>
+  <ion-button class="otp_btn" *ngIf="isjobpost" (click)="booking()">
+    Approved
+  </ion-button>
+</ion-footer> -->

@@ -1,0 +1,119 @@
+ion-content {
+    .silde_img {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .img_div {
+      margin-top: 30px;
+      text-align: center;
+      .name {
+        font-size: 60px;
+        color: var(--ion_color_main);
+        font-family: 'HamburgerHeaven';
+      }
+      .sub {
+        font-size: 11px;
+        font-family: 'Changa_Medium';
+        color: var(--ion_color_main);
+        margin-top: -10px;
+        margin-right: 17px;
+      }
+      .tittle {
+        font-size: 30px;
+        color: var(--ion_dark_blue);
+        font-family: 'Roboto_Bold';
+      }
+    }
+    form {
+      ion-item {
+        box-shadow: 0px 2px 5px 0px rgba(122, 87, 209, 0.25);
+        border-radius: 25px;
+        margin-bottom: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+        ion-input {
+          font-size: 14px;
+        }
+        ion-icon {
+          height: 20px;
+          width: 20px;
+        }
+        .eye_btn {
+          --color: var(--ion_gray);
+          --color-activated: var(--ion_gray);
+          --ripple-color: transparent;
+        }
+      }
+      .item_div {
+        margin-bottom: 0px;
+      }
+  
+      .sign_btn {
+        --border-radius: 25px;
+        margin-top: 30px;
+        height: 46px;
+      }
+    }
+    .later_div {
+      .later_btn {
+        font-size: 18px;
+        font-family: 'Changa_Medium';
+        --color: var(--ion_color_main);
+        --color-activated: var(--ion_color_main);
+        --ripple-color: transparent;
+        text-transform: lowercase;
+        height: 22px;
+        margin-top: 20px;
+      }
+      .or_p {
+        font-size: 20px;
+        font-family: 'Roboto_Medium';
+        color: var(--ion_dark_blue);
+      }
+      .btn_div {
+        ion-button {
+          width: 70px;
+          height: 33px;
+          margin: 0px 13px;
+          --border-radius: 25px;
+          --box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
+          --border-style: solid;
+          --border-width: 3px;
+          --border-color: var(--ion_white);
+        }
+        .fb_btn {
+          --background: var(--ion_btn_blue);
+          ion-icon {
+            height: 13px;
+          }
+        }
+        .gol_btn {
+          --background: var(--ion_btn_google);
+        }
+        .tw_btn {
+          --background: var(--ion_btn_twiter);
+        }
+      }
+    }
+    .last_p {
+      font-size: 14px;
+      text-align: center;
+      margin-top: 20px;
+      color: var(--ion_dark_blue);
+      font-family: 'Roboto_Regular';
+      display: flex;
+      justify-content: center;
+      .signup_btn {
+        --color: var(--ion_dark_blue);
+        --color-activated: var(--ion_dark_blue);
+        --ripple-color: transparent;
+        font-family: 'Roboto_Bold';
+        text-transform: capitalize;
+        font-size: 14px;
+        height: 16px;
+        margin-top: 0px;
+      }
+    }
+  }
+  

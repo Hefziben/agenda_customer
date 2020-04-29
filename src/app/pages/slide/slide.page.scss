@@ -1,0 +1,56 @@
+ion-content {
+  ion-slides {
+    height: 550px;
+    ion-slide {
+      display: block;
+      height: 375px;
+      .img_div {
+        margin-top: 60px;
+        margin-left: 16px;
+        margin-right: 16px;
+        .slide_name {
+          font-size: 25px;
+          font-family: 'Roboto_Medium';
+          color: var(--ion_dark_blue);
+          margin-top: 90px;
+        }
+        .slide_info {
+          font-size: 14px;
+          font-family: 'Roboto_Regular';
+          color: var(--ion_dark_gray);
+          line-height: 22px;
+        }
+      }
+      .slide_2 {
+        img {
+          margin-top: 44px;
+        }
+      }
+      .slide_3 {
+        img {
+          margin-top: 66px;
+        }
+      }
+    }
+  }
+  .skip {
+    margin: 0px;
+    height: 46px;
+    width: 100px;
+    font-size: 16px;
+    font-family: 'Roboto_Regular';
+    --background: var(--ion_dark_blue);
+    --border-radius: 24px 0px 0px 24px;
+    --background-activated: var(--ion_dark_blue);
+  }
+}
+
+.slides-md {
+  --bullet-background: var(--ion_color_main) !important;
+  --bullet-background-active: var(--ion_color_main) !important;
+}
+
+.slides-ios {
+  --bullet-background: var(--ion_color_main) !important;
+  --bullet-background-active: var(--ion_color_main) !important;
+}

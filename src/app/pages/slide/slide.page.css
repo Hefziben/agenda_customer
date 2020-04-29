@@ -1,0 +1,58 @@
+ion-content ion-slides {
+  height: 550px;
+}
+
+ion-content ion-slides ion-slide {
+  display: block;
+  height: 375px;
+}
+
+ion-content ion-slides ion-slide .img_div {
+  margin-top: 60px;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+ion-content ion-slides ion-slide .img_div .slide_name {
+  font-size: 25px;
+  font-family: 'Roboto_Medium';
+  color: var(--ion_dark_blue);
+  margin-top: 90px;
+}
+
+ion-content ion-slides ion-slide .img_div .slide_info {
+  font-size: 14px;
+  font-family: 'Roboto_Regular';
+  color: var(--ion_dark_gray);
+  line-height: 22px;
+}
+
+ion-content ion-slides ion-slide .slide_2 img {
+  margin-top: 44px;
+}
+
+ion-content ion-slides ion-slide .slide_3 img {
+  margin-top: 66px;
+}
+
+ion-content .skip {
+  margin: 0px;
+  height: 46px;
+  width: 100px;
+  font-size: 16px;
+  font-family: 'Roboto_Regular';
+  --background: var(--ion_dark_blue);
+  --border-radius: 24px 0px 0px 24px;
+  --background-activated: var(--ion_dark_blue);
+}
+
+.slides-md {
+  --bullet-background: var(--ion_color_main) !important;
+  --bullet-background-active: var(--ion_color_main) !important;
+}
+
+.slides-ios {
+  --bullet-background: var(--ion_color_main) !important;
+  --bullet-background-active: var(--ion_color_main) !important;
+}
+/*# sourceMappingURL=slide.page.css.map */

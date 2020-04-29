@@ -1,0 +1,24 @@
+ion-tab-bar{
+    box-shadow: 0px -1px 3px 0px rgba(0,0,0, 0.16);
+    ion-tab-button{
+        --color-selected:var(--ion_color_main);
+        --color:var(--ion_type_gray);
+        ion-label{
+            //font-size: 12px;
+            font-family: 'Roboto_Medium';
+        }
+       
+    }
+}
+
+ion-fab{
+    bottom: 25px;
+    ion-fab-button{
+        --border-style: solid;
+        --border-width: 6px;
+        --border-color: var(--ion_white);
+        --box-shadow: 0px -1px 3px 0px rgba(0,0,0,0.16);
+        --background: var(--ion_color_main);
+        --background-activated:var(--ion_color_main);
+    }
+}

@@ -1,0 +1,38 @@
+<ion-content>
+  <img src="assets/image/upper-design.png" class="silde_img">
+  <div class="img_div">
+    <img src="assets/image/login_img.png">
+    <h3 class="name">Rapidnow</h3>
+    <p class="sub">Donde te facilitamos el trabajo</p>
+    <p class="tittle">Verificación</p>
+  </div>
+  <div class="container">
+    <ng-container *ngIf="!otpSent">
+    <div class="sec-container">
+      
+      <ion-item mode="md" >
+        <ion-icon lines="none" name="call" slot="start"></ion-icon>
+        <ion-input  [(ngModel)]="phoneNumber" type="text" placeholder="19208411559"></ion-input>
+      </ion-item>
+
+      <ion-button  class="otp_btn sign_btn"  expand="block" shape="round" (click)="otpChange()" >
+        Enviar código
+      </ion-button>
+
+   </div>
+    </ng-container>
+    <ng-container *ngIf="otpSent">      
+    <div class="sec-container">
+      <ion-item>
+<ion-icon color="primary" slot="start" name="key"></ion-icon>
+<ion-input [(ngModel)]="otp" placeholder="12257" type="text"></ion-input>
+      </ion-item>
+    <ion-button class="otp_btn sign_btn"  (click)="signIn()" expand="block" shape="round">
+      Verificar
+    </ion-button>
+    </div>
+    </ng-container>
+    <div id="sign-in-button"></div>
+    </div>
+
+</ion-content>

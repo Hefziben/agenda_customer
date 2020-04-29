@@ -1,0 +1,159 @@
+ion-header {
+  .locationContent {
+    display: flex;
+    padding-left: 16px;
+    align-items: center;
+
+    img {
+      margin-right: 8px;
+    }
+
+    .textContent {
+      .location {
+        font-family: 'Poppins-Medium';
+        margin: 0;
+        font-size: 15px;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        color: var(--ion_dark_blue);
+
+        img {
+          margin-left: 6px;
+        }
+      }
+
+      .address {
+        margin: 0;
+        color: var(--ion_dark_blue);
+        font-family: 'Poppins-Medium';
+        line-height: 1;
+        font-size: 12px;
+        margin-top: 4px;
+      }
+    }
+  }
+}
+
+ion-content {
+  ion-searchbar {
+    --placeholder-opacity: 1;
+  }
+
+  .first_p {
+    font-size: 12px;
+    font-family: 'Roboto_Medium';
+    color: var(--ion_dark_blue);
+
+    span {
+      ion-icon {
+        margin-right: 3px;
+      }
+    }
+  }
+
+  .img_div {
+    position: relative;
+    height: 85px;
+    padding-left: 32px;
+    background-color: var(--ion_color_main);
+    display: flex;
+    align-items: center;
+
+    .text {
+      font-size: 18px;
+      font-family: 'Roboto_MediumItalic';
+      color: var(--ion_white);
+      width: 55%;
+      margin-top: -5px;
+    }
+
+    img {
+      position: absolute;
+      right: 0;
+      top: -13px;
+    }
+  }
+
+  .service_div {
+    .service_p {
+      font-size: 12px;
+      font-family: 'Roboto_Medium';
+      color: var(--ion_dark_blue);
+
+      span {
+        font-size: 12px;
+        margin-top: 0px;
+        color: var(--ion_color_main);
+        font-family: 'Roboto_Medium';
+      }
+    }
+
+    ion-row {
+      ion-col {
+        width: 31%;
+        position: relative;
+        min-width: 30%;
+        max-width: 31%;
+        box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+        margin-right: 15px;
+        margin-bottom: 15px;
+
+        .icon_div {
+          height: 30px;
+          width: 30px;
+          border-radius: 50%;
+          background-color: var(--ion_color_main);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-left: 6px;
+          margin-top: 5px;
+        }
+
+        .name_p {
+          font-size: 11px;
+          font-family: 'Roboto_Medium';
+          color: var(--ion_dark_blue);
+          margin-top: 30px;
+          margin-bottom: 5px;
+          text-align: center;
+        }
+
+        .treading {
+          position: absolute;
+          top: 10px;
+          right: -6px;
+          background-color: var(--ion_trending);
+          height: 15px;
+          width: 50px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          span {
+            font-size: 9px;
+            color: var(--ion_white);
+            font-family: 'Roboto_Regular';
+            text-transform: uppercase;
+          }
+        }
+
+        .treading:before {
+          content: '';
+          height: 0;
+          width: 0;
+          right: -0.1px;
+          bottom: -5px;
+          border-bottom: 5px solid transparent;
+          border-left: 6px solid var(--ion_dark_red);
+          position: absolute;
+        }
+      }
+    }
+
+    ion-row :nth-child(3n + 3) {
+      margin-right: 0px;
+    }
+  }
+}

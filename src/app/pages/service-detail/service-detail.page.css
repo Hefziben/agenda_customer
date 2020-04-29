@@ -1,0 +1,200 @@
+.header_div {
+  -webkit-box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.16);
+          box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.16);
+}
+
+ion-content .text_p {
+  font-size: 15px;
+  color: var(--ion_dark_blue);
+  font-family: 'Roboto_Medium';
+  padding-left: 16px;
+  margin-bottom: 0px;
+}
+
+ion-content form .item_div img {
+  margin-right: 15px;
+}
+
+ion-content form .item_div ion-input {
+  color: var(--ion_dark_blue);
+  font-size: 14px;
+}
+
+ion-content form .item_div .input_service {
+  border-bottom: solid 1px var(--ion_border);
+}
+
+ion-content form .item_div ion-icon {
+  height: 5px;
+  width: 10px;
+}
+
+ion-content form .text_area {
+  border-radius: 5px;
+  border: solid 1px var(--ion_border);
+  width: auto;
+  font-size: 12px;
+  font-family: 'Roboto_Regular';
+  line-height: 19px;
+  padding: 0px 10px 0px 6px;
+}
+
+ion-content .img_div_service {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 10px;
+}
+
+ion-content .img_div_service .upload_div {
+  padding-top: 10px;
+  height: 98px;
+  width: 98px;
+  -webkit-box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.16);
+          box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.16);
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 16px;
+}
+
+ion-content .img_div_service .upload_div ion-icon {
+  height: 30px;
+  width: 30px;
+  color: var(--ion_img_icon);
+}
+
+ion-content .calnder_div {
+  padding-top: 10px;
+  background-color: var(--ion_color_main);
+  margin-bottom: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  padding-bottom: 15px;
+}
+
+ion-content .calnder_div .view_p {
+  text-align: center;
+  margin: 0px;
+  font-family: 'Roboto_Regular';
+  font-size: 18px;
+  color: var(--ion_white);
+  padding-bottom: 10px;
+  border-bottom: solid 1px var(--ion_white);
+}
+
+ion-content .calnder_div table {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+ion-content .calnder_div tbody td {
+  border: 0px solid !important;
+}
+
+ion-content .calnder_div .table-bordered {
+  background-color: var(--ion_color_main);
+  border: none;
+}
+
+ion-content .calnder_div .table > thead > tr > th,
+ion-content .calnder_div .table > tbody > tr > th,
+ion-content .calnder_div .table > tfoot > tr > th,
+ion-content .calnder_div .table > thead > tr > td,
+ion-content .calnder_div .table > tbody > tr > td,
+ion-content .calnder_div .table > tfoot > tr > td {
+  padding: 3px !important;
+  line-height: 25px;
+  vertical-align: top;
+}
+
+ion-content .calnder_div table tbody td {
+  font-size: 12px !important;
+  font-family: 'Roboto_Regular' !important;
+}
+
+ion-content .calnder_div thead tr th {
+  border: none !important;
+  color: var(--ion_white);
+  font-size: 16px !important;
+  font-family: 'Roboto_Regular' !important;
+  font-weight: normal;
+}
+
+ion-content .calnder_div .monthview-selected {
+  background-color: var(--ion_white) !important;
+  color: var(--ion_color_main);
+  border-radius: 18px;
+}
+
+ion-content .calnder_div .monthview-current {
+  background-color: var(--ion-color-primary);
+  color: black;
+  border-radius: 18px;
+}
+
+ion-content .calnder_div .event-detail-container {
+  border-top: 0px var(--ion_dark_gray) solid;
+  display: none;
+}
+
+ion-content .calnder_div .select_p {
+  font-size: 14px;
+  color: var(--ion_white);
+  text-align: center;
+  font-family: 'Roboto_Regular';
+  margin-top: 0;
+  padding-top: 10px;
+  border-top: solid 1px;
+}
+
+ion-content .calnder_div .monthview-primary-with-event {
+  background-color: var(--ion_color_main);
+}
+
+ion-content .calnder_div td,
+ion-content .calnder_div th {
+  color: var(--ion_white);
+}
+
+ion-content .calnder_div .text-muted {
+  color: var(--ion_dark_gray) !important;
+}
+
+ion-content .calnder_div .monthview-secondary-with-event {
+  background-color: transparent;
+}
+
+ion-content .calnder_div .time_slot {
+  padding-left: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  white-space: nowrap;
+  overflow-x: scroll;
+}
+
+ion-content .calnder_div .time_slot span {
+  font-size: 12px;
+  color: var(--ion_white);
+  font-family: 'Roboto_Regular';
+  opacity: 0.5;
+  margin: auto 10px;
+}
+
+ion-content .calnder_div .time_slot .active {
+  font-size: 14px;
+  opacity: 1;
+}
+
+ion-content .calnder_div .time_slot::-webkit-scrollbar {
+  display: none !important;
+}
+/*# sourceMappingURL=service-detail.page.css.map */

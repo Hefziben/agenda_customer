@@ -1,0 +1,43 @@
+<ion-content>
+  <img src="assets/image/upper-design.png" class="silde_img">
+  <div class="img_div_log">
+    <img src="assets/image/login_img.png">
+    <h3 class="name">Rapidnow</h3>
+    <p class="sub">Donde te facilitamos el trabajo</p>
+    <p class="tittle">Iniciar sesión</p>
+  </div>
+  <form [formGroup]="loginForm" class="ion-margin-horizontal">
+    <ion-item lines="none" mode="md">
+      <ion-icon src="assets/icon-image/man.svg" slot="start"></ion-icon>
+      <ion-input formControlName="user"  type="text" placeholder="19003454567"></ion-input>
+    </ion-item>
+    <ion-item lines="none" class="item_div" mode="md">
+      <ion-icon src="assets/icon-image/padlock.svg" slot="start"></ion-icon>
+      <ion-input formControlName="password"[type]="showPassword==true ? 'text' : 'password'" placeholder="* * * * * * * *"></ion-input>
+      <ion-button class="trans-btn eye_btn" (click)="showPassword = !showPassword">
+        <ion-icon *ngIf="!showPassword" name="eye"></ion-icon>
+        <ion-icon *ngIf="showPassword" name="eye-off"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-row>
+      <ion-col>
+
+      </ion-col>
+      <!-- <ion-col class="ion-text-end">
+        <ion-button class="forgot-btn ion-text-capitalize trans-btn" (click)="forgotPassword()">forgot password?
+        </ion-button>
+      </ion-col> -->
+    </ion-row>
+    <ion-button class="otp_btn sign_btn" (click)="sign_in()">
+      Iniciar sesión
+    </ion-button>
+  </form>
+  <!-- <div class="later_div ion-text-center">
+    <ion-button class="trans-btn later_btn" (click)="gotoHome()">
+      sign i
+    </ion-button>
+  </div> -->
+  <p class="last_p">¿Eres nuevo? <ion-button class="trans-btn signup_btn" (click)="signup()">Registrate
+    </ion-button>
+  </p>
+</ion-content>
